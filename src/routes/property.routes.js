@@ -8,6 +8,7 @@ const router = Router();
 
 // Endpoint: GET /api/v1/properties/nearby
 // Public route: Anyone can search for properties near them
+router.get('/', propertyController.getProperties);
 router.get('/nearby', propertyController.getNearbyProperties);
 
 // Endpoint: POST /api/v1/properties

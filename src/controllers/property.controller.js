@@ -45,3 +45,22 @@ export const getNearbyProperties = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+
+export const getProperties = catchAsync(async (req, res, next) => {
+  const result = await propertyService.getAllProperties(req.query);
+
+  res.status(200).json({
+    status: 'success',
+    results: result.properties.length,
+    pagination: {
+      total: result.total,
+      page: result.page,
+      limit: result.limit,
+      totalPages: result.totalPages,
+    },
+    data: {
+      properties: result.properties,
+    },
+  });
+});
