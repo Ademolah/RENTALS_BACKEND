@@ -59,7 +59,7 @@ const UserSchema = new Schema(
 );
 
 // Performance Optimization: Indexing email and phone numbers for rapid login validation loops
-UserSchema.index({ email: 1 });
-UserSchema.index({ phoneNumber: 1 });
+// UserSchema.index({ email: 1 });
+// UserSchema.index({ phoneNumber: 1 });
 
 export const User = model('User', UserSchema);
