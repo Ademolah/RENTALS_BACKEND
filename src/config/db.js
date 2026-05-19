@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { logger } from './logger.js';
 
 export const connectDB = async () => {
   try {
@@ -9,9 +10,9 @@ export const connectDB = async () => {
     };
 
     const conn = await mongoose.connect(process.env.MONGO_URI, connectionOptions);
-    console.log(`📡 MongoDB Engine Engaged: ${conn.connection.host}`);
+    logger.info(`📡 MongoDB Engine Engaged: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`❌ Critical Database Connection Failure: ${error.message}`);
+    logger.error(`❌ Critical Database Connection Failure: ${error.message}`);
     // Immediately terminate the server runtime if our primary data layer is unreachable
     process.exit(1);
   }

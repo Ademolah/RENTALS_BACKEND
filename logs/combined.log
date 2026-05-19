@@ -1,0 +1,5 @@
+[2026-05-19 14:37:34:3734] info: 
+📧 SIMULATED EMAIL TO: new.staff@gmail.com
+[2026-05-19 14:37:34:3734] debug: Subject: You've been invited to join the Agency
+[2026-05-19 14:37:34:3734] debug: Click here to accept: http://localhost:3000/join-agency?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VuY3lJZCI6IjZhMGMwMTVmOTZjYTY5Zjk4N2VjMmY0MyIsImVtYWlsIjoibmV3LnN0YWZmQGdtYWlsLmNvbSIsImlhdCI6MTc3OTE5Nzg1NCwiZXhwIjoxNzc5Mjg0MjU0fQ.61SiDxI2YvF2iQ-uuERe_1cIBUmnksy5fQx2628lo1Q
+

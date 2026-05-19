@@ -1,6 +1,7 @@
 import { catchAsync } from '../utils/catchAsync.js';
 import * as agencyService from '../services/agency.service.js';
 import { User } from '../models/User.js'; // We need the User model for the upgrade
+import { logger } from '../config/logger.js';
 
 export const registerAgency = catchAsync(async (req, res, next) => {
   // 1. Pass the validated Zod payload to our corporate service engine
@@ -51,9 +52,9 @@ export const inviteAgent = catchAsync(async (req, res, next) => {
   const magicLink = `http://localhost:3000/join-agency?token=${inviteToken}`;
 
   // 4. Simulate sending the email (We will replace this with real email logic later)
-  console.log(`\n📧 SIMULATED EMAIL TO: ${email}`);
-  console.log(`Subject: You've been invited to join the Agency`);
-  console.log(`Click here to accept: ${magicLink}\n`);
+  logger.info(`\n📧 SIMULATED EMAIL TO: ${email}`);
+  logger.debug(`Subject: You've been invited to join the Agency`);
+  logger.debug(`Click here to accept: ${magicLink}\n`);
 
   res.status(200).json({
     status: 'success',
