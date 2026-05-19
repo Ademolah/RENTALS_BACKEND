@@ -30,3 +30,33 @@ export const registerAgency = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+
+export const inviteAgent = catchAsync(async (req, res, next) => {
+  const { email } = req.body;
+
+  // 1. Security Check: Only ADMINs can invite agents to their firm
+  if (req.user.role !== 'AGENCY_ADMIN') {
+    return next(new AppError('Unauthorized: Only Agency Administrators can invite staff.', 403));
+  }
+
+  if (!email) {
+    return next(new AppError('Please provide the email address of the agent you wish to invite.', 400));
+  }
+
+  // 2. Generate the Cryptographic Token
+  const inviteToken = await agencyService.generateAgentInviteToken(req.user.agencyId, email);
+
+  // 3. Construct the Magic Link (Assuming your frontend runs on localhost:3000 for now)
+  const magicLink = `http://localhost:3000/join-agency?token=${inviteToken}`;
+
+  // 4. Simulate sending the email (We will replace this with real email logic later)
+  console.log(`\n📧 SIMULATED EMAIL TO: ${email}`);
+  console.log(`Subject: You've been invited to join the Agency`);
+  console.log(`Click here to accept: ${magicLink}\n`);
+
+  res.status(200).json({
+    status: 'success',
+    message: `Invitation successfully sent to ${email}`,
+  });
+});

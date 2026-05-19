@@ -10,5 +10,7 @@ const router = Router();
 router.post('/register', validate(registerSchema), authController.register);
 
 router.post('/login', validate(loginSchema), authController.login);
+router.post('/register-agent', authController.registerInvitedAgent)
+
 
 export default router;
