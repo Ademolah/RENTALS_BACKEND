@@ -7,14 +7,14 @@ const AgencySchema = new Schema(
       required: [true, 'Corporate business name is required'],
       unique: true,
       trim: true,
-      index: true, // Speeds up search queries when filtering properties by agency
+      index: true, 
     },
     cacNumber: {
       type: String,
       required: [true, 'Corporate Affairs Commission (CAC) registration number is required'],
       unique: true,
       trim: true,
-      uppercase: true, // Standardizes inputs for clean matching
+      uppercase: true, 
     },
     hqAddress: {
       type: String,
@@ -27,12 +27,31 @@ const AgencySchema = new Schema(
         values: ['PENDING', 'APPROVED', 'REJECTED'],
         message: 'Status must be either PENDING, APPROVED, or REJECTED',
       },
-      default: 'PENDING', // Every new agency application begins here until verified by an admin
-      index: true, // Crucial index: allows our systems to quickly isolate verified entities
+      default: 'PENDING', 
+      index: true, 
+    },
+    // =====================================================================
+    // PREMIUM BRAND IDENTITY & DOCUMENTATION ENGINE
+    // =====================================================================
+    brandAssets: {
+      logoUrl: {
+        type: String,
+        default: null,
+      },
+      primaryColor: {
+        type: String,
+        default: '#000000', // Used to chromatically engineer dynamic email templates
+      },
+    },
+    // The layout engine choice for client-facing documentation
+    selectedTemplate: { 
+      type: String, 
+      enum: ['minimalist', 'zenith', 'institutional', 'modern'], 
+      default: 'modern' 
     },
   },
   {
-    timestamps: true, // Automatically manages createdAt and updatedAt values
+    timestamps: true, 
   }
 );
 

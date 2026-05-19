@@ -47,9 +47,7 @@ export const getAllProperties = async (queryString) => {
   queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
   const filter = JSON.parse(queryStr);
 
-  // =======================================================================
-  // 🚀 SURGICAL INJECTION: MAKE TEXT SEARCHES CASE-INSENSITIVE
-  // =======================================================================
+  
   const textSearchFields = ['locality', 'state', 'title'];
   
   textSearchFields.forEach((field) => {

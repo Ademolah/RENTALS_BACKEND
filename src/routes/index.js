@@ -2,6 +2,7 @@ import { Router } from 'express';
 import authRoutes from './auth.routes.js';
 import mediaRoutes from './media.routes.js'
 import propertyRoutes from './property.routes.js'
+import agencyRoute from './agency.routes.js'
 
 const router = Router();
 
@@ -9,5 +10,6 @@ const router = Router();
 router.use('/auth', authRoutes);
 router.use('/media', mediaRoutes);
 router.use('/properties', propertyRoutes)
+router.use('/agency', agencyRoute)
 
 export default router;
