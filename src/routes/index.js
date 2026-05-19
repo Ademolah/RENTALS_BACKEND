@@ -10,6 +10,6 @@ const router = Router();
 router.use('/auth', authRoutes);
 router.use('/media', mediaRoutes);
 router.use('/properties', propertyRoutes)
-router.use('/agency', agencyRoute)
+router.use('/agencies', agencyRoute)
 
 export default router;

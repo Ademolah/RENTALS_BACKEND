@@ -18,7 +18,6 @@ export const register = catchAsync(async (req, res, next) => {
 export const login = catchAsync(async (req, res, next) => {
   const { user, token } = await authService.loginUserAccount(req.validated.body);
 
-
   res.status(200).json({
     status: 'success',
     token,

@@ -10,7 +10,7 @@ export const registerAgency = catchAsync(async (req, res, next) => {
   const upgradedUser = await User.findByIdAndUpdate(
     req.user._id, // The ID from our protectRoute middleware
     {
-      role: 'ADMIN', // The creator is the boss of the agency
+      role: 'AGENCY_ADMIN', // The creator is the boss of the agency
       agencyId: newAgency._id,
     },
     { new: true, runValidators: true }
