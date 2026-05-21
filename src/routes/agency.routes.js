@@ -15,6 +15,6 @@ router.post(
   agencyController.registerAgency
 );
 
-router.post('/invite', protectRoute, agencyController.inviteAgent)
+
 
 export default router;

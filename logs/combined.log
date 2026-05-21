@@ -8,3 +8,72 @@
 [2026-05-19 16:03:31:331] info: 📡 MongoDB Engine Engaged: localhost
 [2026-05-19 16:04:25:425] info: 📡 MongoDB Engine Engaged: localhost
 [2026-05-19 16:04:36:436] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 10:02:12:212] warn: [POST /api/v1/auth/register] ⚠️ body.phoneNumber : Invalid input: expected string, received undefined
+[2026-05-20 13:12:43:1243] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 13:36:25:3625] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 16:32:45:3245] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 16:33:07:337] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 16:33:30:3330] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 16:58:47:5847] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 23:22:04:224] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 23:25:23:2523] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 23:25:35:2535] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-20 23:27:00:270] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:05:09:59] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:05:21:521] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:05:25:525] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:07:46:746] error: [POST /api/v1/auth/invite-agent] ❌ AppError is not defined
+Stack: ReferenceError: AppError is not defined
+    at inviteAgent (file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:82:21)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-21 00:08:20:820] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:08:32:832] warn: [POST /api/v1/auth/invite-agent] ⚠️ Target email and Agency ID are strictly required
+[2026-05-21 00:11:03:113] error: [POST /api/v1/auth/invite-agent] ❌ Failed to dispatch the invitation email. Please check your SMTP configuration.
+Stack: Error: Failed to dispatch the invitation email. Please check your SMTP configuration.
+    at inviteAgent (file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:158:17)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-21 00:17:19:1719] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:21:10:2110] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:33:11:3311] warn: [POST /api/v1/auth/accept-invite] ⚠️ The resource matching path /api/v1/auth/accept-invite could not be located on this server.
+[2026-05-21 00:33:44:3344] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:33:50:3350] warn: [POST /api/v1/auth/accept-invite] ⚠️ Invalid or corrupted invitation link.
+[2026-05-21 00:35:02:352] error: [POST /api/v1/auth/accept-invite] ❌ User is not defined
+Stack: ReferenceError: User is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:226:24
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+[2026-05-21 00:35:38:3538] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:36:12:3612] error: [POST /api/v1/auth/accept-invite] ❌ User validation failed: passwordHash: Password signature is required
+Stack: ValidationError: User validation failed: passwordHash: Password signature is required
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async Function.create (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:2747:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:233:20
+[2026-05-21 00:41:16:4116] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:41:46:4146] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:42:19:4219] error: [POST /api/v1/auth/accept-invite] ❌ hashedPassword is not defined
+Stack: ReferenceError: hashedPassword is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:239:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-21 00:42:41:4241] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 00:43:18:4318] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 10:34:49:3449] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 11:06:15:615] warn: [POST /api/v1/agencies/register] ⚠️ The resource matching path /api/v1/agencies/register could not be located on this server.
+[2026-05-21 11:07:28:728] warn: [POST /api/v1/agencies] ⚠️ body.corporateName : Invalid input: expected string, received undefined, body.hqAddress : Invalid input: expected string, received undefined
+[2026-05-21 11:08:22:822] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 11:08:32:832] warn: [POST /api/v1/agencies] ⚠️ body.corporateName : Invalid input: expected string, received undefined, body.hqAddress : Invalid input: expected string, received undefined

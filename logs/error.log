@@ -1,0 +1,38 @@
+[2026-05-21 00:07:46:746] error: [POST /api/v1/auth/invite-agent] ❌ AppError is not defined
+Stack: ReferenceError: AppError is not defined
+    at inviteAgent (file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:82:21)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-21 00:11:03:113] error: [POST /api/v1/auth/invite-agent] ❌ Failed to dispatch the invitation email. Please check your SMTP configuration.
+Stack: Error: Failed to dispatch the invitation email. Please check your SMTP configuration.
+    at inviteAgent (file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:158:17)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-21 00:35:02:352] error: [POST /api/v1/auth/accept-invite] ❌ User is not defined
+Stack: ReferenceError: User is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:226:24
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+[2026-05-21 00:36:12:3612] error: [POST /api/v1/auth/accept-invite] ❌ User validation failed: passwordHash: Password signature is required
+Stack: ValidationError: User validation failed: passwordHash: Password signature is required
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async Function.create (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:2747:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:233:20
+[2026-05-21 00:42:19:4219] error: [POST /api/v1/auth/accept-invite] ❌ hashedPassword is not defined
+Stack: ReferenceError: hashedPassword is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:239:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
