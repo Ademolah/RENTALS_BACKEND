@@ -78,3 +78,67 @@ Stack: ReferenceError: hashedPassword is not defined
 [2026-05-21 11:08:22:822] info: 📡 MongoDB Engine Engaged: localhost
 [2026-05-21 11:08:32:832] warn: [POST /api/v1/agencies] ⚠️ body.corporateName : Invalid input: expected string, received undefined, body.hqAddress : Invalid input: expected string, received undefined
 [2026-05-21 11:15:52:1552] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 12:03:59:359] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 12:05:25:525] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 12:27:30:2730] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 12:27:57:2757] error: [GET /api/v1/properties/search?location=Ikoyi&maxBudget=100m&sort=price] ❌ getAllProperties is not defined
+Stack: ReferenceError: getAllProperties is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:99:25
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+[2026-05-21 12:28:56:2856] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 19:44:53:4453] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 22:16:54:1654] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-21 22:16:54:1654] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-21 22:17:21:1721] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 22:17:24:1724] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-21 22:17:24:1724] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-21 22:17:38:1738] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 22:17:43:1743] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-21 22:17:43:1743] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-21 22:22:14:2214] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-21 22:22:19:2219] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-21 22:22:19:2219] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-22 09:35:56:3556] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 09:37:26:3726] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 09:40:14:4014] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 09:42:06:426] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-22 09:42:06:426] warn: [POST /api/v1/properties] ⚠️ body : Invalid input: expected object, received undefined
+[2026-05-22 09:48:27:4827] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 09:49:28:4928] warn: [POST /api/v1/properties] ⚠️ body.pricePerAnnum : Invalid input: expected number, received string, body.serviceCharge : Invalid input: expected number, received string, body.cautionFee : Invalid input: expected number, received string, body.beds : Invalid input: expected number, received string, body.baths : Invalid input: expected number, received string, body.location : Invalid input: expected object, received string
+[2026-05-22 09:49:50:4950] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 09:51:25:5125] warn: [POST /api/v1/properties] ⚠️ body.description : Provide a detailed description, body.pricePerAnnum : Invalid input: expected number, received string, body.serviceCharge : Invalid input: expected number, received string, body.cautionFee : Invalid input: expected number, received string, body.beds : Invalid input: expected number, received string, body.baths : Invalid input: expected number, received string, body.location : Invalid input: expected object, received string
+[2026-05-22 09:55:14:5514] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 10:00:13:013] warn: [POST /api/v1/properties] ⚠️ body.beds : Too small: expected number to be >0, body.baths : Too small: expected number to be >0
+[2026-05-22 10:00:56:056] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 10:01:03:13] warn: [POST /api/v1/properties] ⚠️ body.beds : Too small: expected number to be >0, body.baths : Too small: expected number to be >0
+[2026-05-22 10:02:59:259] warn: [POST /api/v1/properties] ⚠️ body.beds : Too small: expected number to be >0, body.baths : Too small: expected number to be >0
+[2026-05-22 10:10:17:1017] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 14:59:03:593] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:07:34:734] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:10:46:1046] warn: [POST /api/v1/properties] ⚠️ body.description : Provide a detailed description
+[2026-05-22 15:16:03:163] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:16:54:1654] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:17:48:1748] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:21:17:2117] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:21:46:2146] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:38:18:3818] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:42:44:4244] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:45:13:4513] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 15:45:19:4519] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 19:50:48:5048] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:03:00:30] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:05:36:536] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:06:25:625] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:06:33:633] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:06:50:650] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:12:52:1252] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:23:15:2315] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-22 20:23:31:2331] info: 📡 MongoDB Engine Engaged: localhost
