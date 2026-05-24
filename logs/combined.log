@@ -172,3 +172,4 @@ Stack: TypeError: Cannot read properties of undefined (reading 'agencyId')
     at param (D:\RENTALS BACKEND\node_modules\router\index.js:600:14)
     at param (D:\RENTALS BACKEND\node_modules\router\index.js:610:14)
 [2026-05-24 17:53:49:5349] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 17:53:55:5355] info: 📡 MongoDB Engine Engaged: localhost
