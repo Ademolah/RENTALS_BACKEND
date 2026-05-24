@@ -142,3 +142,33 @@ Stack: ReferenceError: getAllProperties is not defined
 [2026-05-22 20:12:52:1252] info: 📡 MongoDB Engine Engaged: localhost
 [2026-05-22 20:23:15:2315] info: 📡 MongoDB Engine Engaged: localhost
 [2026-05-22 20:23:31:2331] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-23 21:01:53:153] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-23 21:04:24:424] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:22:11:2211] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:23:45:2345] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:34:51:3451] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:35:04:354] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:36:41:3641] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:38:29:3829] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:39:14:3914] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:41:36:4136] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 13:42:16:4216] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 17:20:38:2038] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-05-24 17:37:28:3728] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-24 17:40:00:400] warn: [GET /api/v1/api/v1/properties?isAvailable=all] ⚠️ The resource matching path /api/v1/api/v1/properties?isAvailable=all could not be located on this server.
+[2026-05-24 17:40:01:401] warn: [GET /api/v1/api/v1/properties?isAvailable=all] ⚠️ The resource matching path /api/v1/api/v1/properties?isAvailable=all could not be located on this server.
+[2026-05-24 17:45:25:4525] warn: [GET /api/v1/api/v1/properties?isAvailable=all] ⚠️ The resource matching path /api/v1/api/v1/properties?isAvailable=all could not be located on this server.
+[2026-05-24 17:45:26:4526] warn: [GET /api/v1/api/v1/properties?isAvailable=all] ⚠️ The resource matching path /api/v1/api/v1/properties?isAvailable=all could not be located on this server.
+[2026-05-24 17:50:33:5033] error: [PATCH /api/v1/properties/6a11af8fe5ab55e6be4326e5] ❌ Cannot read properties of undefined (reading 'agencyId')
+Stack: TypeError: Cannot read properties of undefined (reading 'agencyId')
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:136:29
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at param (D:\RENTALS BACKEND\node_modules\router\index.js:600:14)
+    at param (D:\RENTALS BACKEND\node_modules\router\index.js:610:14)
+[2026-05-24 17:53:49:5349] info: 📡 MongoDB Engine Engaged: localhost

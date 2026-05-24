@@ -130,3 +130,43 @@ export const searchProperties = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+export const updateProperty = catchAsync(async (req, res, next) => {
+  const propertyId = req.params.id;
+  const agencyId = req.user.agencyId; // Extracted safely from auth middleware
+
+  const updatedProperty = await propertyService.updateProperty(
+    propertyId, 
+    agencyId, 
+    req.body
+  );
+
+  // If the ID doesn't exist OR agencyId mismatched, return a clean 404/unauthorized message
+  if (!updatedProperty) {
+    return next(new Error('Property not found or you lack administrative authorization to modify it'));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      property: updatedProperty,
+    },
+  });
+});
+
+export const deleteProperty = catchAsync(async (req, res, next) => {
+  const propertyId = req.params.id;
+  const agencyId = req.user.agencyId;
+
+  const deletedProperty = await propertyService.deleteProperty(propertyId, agencyId);
+
+  if (!deletedProperty) {
+    return next(new Error('Property not found or you lack administrative authorization to purge it'));
+  }
+
+  // 204 status signifies standard successful resource destruction with no payload content returned
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});

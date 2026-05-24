@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { required } from 'zod/mini';
 
 const PropertySchema = new Schema(
   {
@@ -73,7 +74,7 @@ const PropertySchema = new Schema(
     isAvailable: {
       type: Boolean,
       default: true,
-      index: true,
+      required: true,
     },
   },
   {

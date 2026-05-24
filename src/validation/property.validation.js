@@ -22,6 +22,11 @@ export const createPropertySchema = z.object({
     state: z.string({ required_error: 'State is required' }),
     locality: z.string({ required_error: 'Locality is required' }),
     streetAddress: z.string({ required_error: 'Street address is required' }),
+
+    isAvailable: z.preprocess(
+      (val) => val === 'true' || val === true, 
+      z.boolean()
+    ).default(true),
     
     // Arrays of secure Cloudinary URLs
     mediaUrls: z.array(z.string().url()).optional().default([]),
