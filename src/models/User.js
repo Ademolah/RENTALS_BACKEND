@@ -37,7 +37,7 @@ const UserSchema = new Schema(
     status: {
       type: String,
       enum: ['PENDING', 'APPROVED', 'REJECTED'],
-      default: 'PENDING', // Agents must be vetted by their agency admins or system admins before gaining access
+      default: 'APPROVED', // Agents must be vetted by their agency admins or system admins before gaining access
     },
     // The link to the agency
     agencyId: {
