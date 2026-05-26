@@ -66,6 +66,25 @@ const PropertySchema = new Schema(
       type: String,
       default: null, // Stores raw embedding tokens for responsive 3D immersive views[cite: 2]
     },
+    // The Categorization Engine
+  propertyType: {
+    type: String,
+    required: [true, 'An asset must be categorized by its structural or transaction type'],
+    enum: {
+      values: [
+        'house', 
+        'penthouse', 
+        'apartment', 
+        'shortlet', 
+        'land', 
+        'commercial', 
+        'terraced'
+      ],
+      message: 'Property type must be one of: house, penthouse, apartment, shortlet, land, commercial, or terraced'
+    },
+    default: 'house',
+    index: true // Crucial for optimizing performance when filtering the horizontal UI feeds
+  },
     agencyId: {
       type: Schema.Types.ObjectId,
       ref: 'Agency',
