@@ -38,3 +38,33 @@ export const generateAgentInviteToken = (agencyId, targetEmail) => {
 
   return inviteToken;
 };
+
+export const processAgencyApplication = async (agencyId, decision, adminNotes, superAdminId) => {
+  const agency = await Agency.findById(agencyId);
+  if (!agency) {
+    throw new AppError('Agency application not found.', 404);
+  }
+
+  // 🚨 FIXED: Changed verificationStatus to status
+  if (agency.status !== 'PENDING') {
+    throw new AppError(`This agency has already been ${agency.status}.`, 400);
+  }
+
+  // 🚨 FIXED: Changed verificationStatus to status
+  agency.status = decision;
+  agency.reviewedBy = superAdminId;
+  agency.reviewNotes = adminNotes;
+  agency.reviewedAt = Date.now();
+
+  await agency.save();
+
+  if (decision === 'APPROVED') {
+    await User.findOneAndUpdate(
+      { agencyId: agency._id }, 
+      { role: 'AGENCY_ADMIN' },
+      { new: true, runValidators: true }
+    );
+  }
+
+  return agency;
+};

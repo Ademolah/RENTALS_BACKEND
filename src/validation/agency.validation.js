@@ -22,3 +22,21 @@ export const registerAgencySchema = z.object({
       .optional(),
   }),
 });
+
+export const reviewAgencySchema = z.object({
+  body: z.object({
+    decision: z.enum(['APPROVED', 'REJECTED'], {
+      required_error: 'A valid decision (APPROVED or REJECTED) is required.',
+    }),
+    adminNotes: z.string().optional(),
+  }).superRefine((data, ctx) => {
+    // Premium Logic: If a Super Admin rejects an agency, they MUST provide a reason
+    if (data.decision === 'REJECTED' && (!data.adminNotes || data.adminNotes.length < 10)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'A detailed reason must be provided when rejecting an agency application.',
+        path: ['adminNotes'],
+      });
+    }
+  }),
+});

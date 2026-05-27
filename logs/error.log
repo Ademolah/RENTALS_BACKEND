@@ -60,3 +60,35 @@ Stack: TypeError: Cannot read properties of undefined (reading 'agencyId')
     at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
     at param (D:\RENTALS BACKEND\node_modules\router\index.js:600:14)
     at param (D:\RENTALS BACKEND\node_modules\router\index.js:610:14)
+[2026-05-27 14:07:36:736] error: [PATCH /api/v1/admin/agency/6a0edb9b5746f78bddd2a787/review] ❌ Cannot read properties of undefined (reading 'body')
+Stack: TypeError: Cannot read properties of undefined (reading 'body')
+    at file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:13:50
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-27 14:07:42:742] error: [PATCH /api/v1/admin/agency/6a0edb9b5746f78bddd2a787/review] ❌ Cannot read properties of undefined (reading 'body')
+Stack: TypeError: Cannot read properties of undefined (reading 'body')
+    at file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:13:50
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-27 14:11:03:113] error: [PATCH /api/v1/admin/agency/6a0edb9b5746f78bddd2a787/review] ❌ processAgencyApplication is not defined
+Stack: ReferenceError: processAgencyApplication is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:20:25
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-05-27 14:11:09:119] error: [PATCH /api/v1/admin/agency/6a0edb9b5746f78bddd2a787/review] ❌ processAgencyApplication is not defined
+Stack: ReferenceError: processAgencyApplication is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:20:25
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
