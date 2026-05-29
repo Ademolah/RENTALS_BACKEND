@@ -1,5 +1,5 @@
 import express from 'express';
-import { requestTour, getAgencyBookings } from '../controllers/tourBooking.controller.js';
+import { requestTour, getAgencyBookings, updateBookingStatus } from '../controllers/tourBooking.controller.js';
 import { protectRoute } from '../middleware/auth.middleware.js'; // Adjust paths
 
 const router = express.Router();
@@ -16,5 +16,7 @@ router.get(
   protectRoute, 
   getAgencyBookings
 );
+
+router.patch('/:id/status', protectRoute, updateBookingStatus);
 
 export default router;

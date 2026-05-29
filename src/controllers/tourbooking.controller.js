@@ -69,3 +69,40 @@ export const getAgencyBookings = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+export const updateBookingStatus = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  // 1. Validate the incoming status parameter
+  const validStatuses = ['PENDING', 'CONFIRMED', 'COMPLETED', 'CANCELLED'];
+  if (!validStatuses.includes(status)) {
+    return next(new AppError('Invalid state transition requested.', 400));
+  }
+
+  // 2. Locate the target booking
+  const booking = await TourBooking.findById(id);
+
+  if (!booking) {
+    return next(new AppError('Target booking could not be located in the registry.', 404));
+  }
+
+  // 3. 🚨 SECURITY VAULT CHECK: Ensure the agent's agency matches the booking's agency
+  // This prevents agents from modifying bookings belonging to competing agencies
+  if (booking.agencyId.toString() !== req.user.agencyId.toString()) {
+    return next(new AppError('Cryptographic mismatch: You are not authorized to modify this itinerary.', 403));
+  }
+
+  // 4. Execute the transition
+  booking.status = status;
+  await booking.save();
+
+  // 5. Return success payload
+  return res.status(200).json({
+    status: 'success',
+    message: `Booking successfully updated to ${status}`,
+    data: {
+      booking,
+    },
+  });
+});

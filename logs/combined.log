@@ -278,3 +278,9 @@ Stack: ReferenceError: processAgencyApplication is not defined
 [2026-05-29 10:30:41:3041] info: 📡 MongoDB Engine Engaged: localhost
 [2026-05-29 10:39:16:3916] info: 📡 MongoDB Engine Engaged: localhost
 [2026-05-29 10:39:25:3925] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-29 17:50:11:5011] warn: [PATCH /api/v1/bookings/6a1960a1ce43be3ccac122cc/status] ⚠️ The resource matching path /api/v1/bookings/6a1960a1ce43be3ccac122cc/status could not be located on this server.
+[2026-05-29 17:55:25:5525] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-29 17:57:03:573] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-29 17:57:16:5716] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-29 17:57:22:5722] info: 📡 MongoDB Engine Engaged: localhost
+[2026-05-29 18:07:35:735] info: 📡 MongoDB Engine Engaged: localhost
