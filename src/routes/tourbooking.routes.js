@@ -1,6 +1,6 @@
 import express from 'express';
 import { protectRoute } from '../middleware/auth.middleware.js'; // Adjust paths
-import { requestTour, getAgencyBookings, updateBookingStatus } from '../controllers/tourbooking.controller.js';
+import { requestTour, getAgencyBookings, updateBookingStatus } from '../controllers/tourBooking.controller.js';
 
 const router = express.Router();
 
