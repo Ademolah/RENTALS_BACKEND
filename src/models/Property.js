@@ -32,18 +32,6 @@ const PropertySchema = new Schema(
       type: Number,
       required: [true, 'Number of bathrooms is required'],
     },
-    // GEOSPATIAL ENGINE CORES: Must be structured explicitly to match MongoDB's spatial engine requirements
-    location: {
-      type: {
-        type: String,
-        enum: ['Point'],
-        required: true,
-      },
-      coordinates: {
-        type: [Number], // Enforces coordinate arrays: [longitude, latitude]
-        required: [true, 'Geospatial coordinates mapping values are mandatory'],
-      },
-    },
     state: {
       type: String,
       required: [true, 'State location parameter is mandatory (e.g., Lagos)'],
@@ -72,13 +60,13 @@ const PropertySchema = new Schema(
     required: [true, 'An asset must be categorized by its structural or transaction type'],
     enum: {
       values: [
-        'house', 
-        'penthouse', 
-        'apartment', 
-        'shortlet', 
-        'land', 
-        'commercial', 
-        'terraced'
+        'House', 
+        'Penthouse', 
+        'Apartment', 
+        'Shortlet', 
+        'Land', 
+        'Commercial', 
+        'Terraced'
       ],
       message: 'Property type must be one of: house, penthouse, apartment, shortlet, land, commercial, or terraced'
     },
@@ -105,8 +93,6 @@ const PropertySchema = new Schema(
 // PERFORMANCE OPTIMIZATION & INDEXES (The Speed Secret)
 // =========================================================================
 
-// 1. Mandatory 2dsphere index for real-time map distance searches[cite: 2]
-PropertySchema.index({ location: '2dsphere' });
 
 // 2. Compound indexing for ultra-fast filtering:
 // When users filter by locality (e.g., Lekki), availability, and price concurrently, 

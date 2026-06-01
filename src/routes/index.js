@@ -5,6 +5,7 @@ import propertyRoutes from './property.routes.js'
 import agencyRoute from './agency.routes.js'
 import adminRoute from './admin.routes.js'
 import tourBookingRoute from './tourbooking.routes.js'
+import hotelRoute from './hotel.routes.js'
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.use('/properties', propertyRoutes)
 router.use('/agencies', agencyRoute)
 router.use('/admin', adminRoute)
 router.use('/bookings', tourBookingRoute)
+router.use('/hotels', hotelRoute)
 
 export default router;

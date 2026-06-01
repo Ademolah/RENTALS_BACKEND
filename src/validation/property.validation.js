@@ -19,15 +19,7 @@ export const createPropertySchema = z.object({
     beds: z.number({ required_error: 'Number of beds is required' }).int().positive(),
     baths: z.number({ required_error: 'Number of baths is required' }).positive(),
     
-    // Strict Geospatial Validation
-    location: z.object({
-      type: z.literal('Point'),
-      coordinates: z.tuple([
-        z.number().min(-180).max(180, 'Longitude must be between -180 and 180'),
-        z.number().min(-90).max(90, 'Latitude must be between -90 and 90'),
-      ]),
-    }),
-    
+    // Standard Location Routing (Coordinates removed for frictionless onboarding)
     state: z.string({ required_error: 'State is required' }),
     locality: z.string({ required_error: 'Locality is required' }),
     streetAddress: z.string({ required_error: 'Street address is required' }),
