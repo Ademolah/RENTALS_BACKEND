@@ -60,13 +60,13 @@ const PropertySchema = new Schema(
     required: [true, 'An asset must be categorized by its structural or transaction type'],
     enum: {
       values: [
-        'House', 
-        'Penthouse', 
-        'Apartment', 
-        'Shortlet', 
-        'Land', 
-        'Commercial', 
-        'Terraced'
+        'house', 
+        'penthouse', 
+        'apartment', 
+        'shortlet', 
+        'land', 
+        'commercial', 
+        'terraced'
       ],
       message: 'Property type must be one of: house, penthouse, apartment, shortlet, land, commercial, or terraced'
     },

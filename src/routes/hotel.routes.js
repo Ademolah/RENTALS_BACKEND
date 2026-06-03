@@ -57,17 +57,25 @@ const parseHotelMultipartBody = (req, res, next) => {
 // PREMIUM HOSPITALITY INGESTION & EXPLORER ROUTES
 // =========================================================================
 
-// Public Search Route (Matches your existing bento grid feed patterns)
-router.get('/', hotelController.searchHotels);
-
 // Authenticated Premium Ingestion Pipeline
 router.post(
   '/', 
   protectRoute, 
   HotelUpload,
   parseHotelMultipartBody, // Intercepts, strips, and shapes text payloads
-  validate(createHotelSchema), 
+  validate(createHotelSchema),
   hotelController.listHotel
 );
+
+// Public Search Route (Matches your existing bento grid feed patterns)
+router.get('/', hotelController.searchHotels);
+router.get('/:hotelId/reservations', protectRoute, hotelController.getHotelReservations);
+router.route('/:id')
+  .delete(hotelController.deleteReservation);
+
+// Status Specific Hooks
+router.patch('/:id/confirm', protectRoute, hotelController.confirmReservation);
+router.patch('/:id/cancel', protectRoute, hotelController.cancelReservation);
+
 
 export default router;
