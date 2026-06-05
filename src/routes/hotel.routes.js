@@ -53,9 +53,6 @@ const parseHotelMultipartBody = (req, res, next) => {
   next();
 };
 
-// =========================================================================
-// PREMIUM HOSPITALITY INGESTION & EXPLORER ROUTES
-// =========================================================================
 
 // Authenticated Premium Ingestion Pipeline
 router.post(
@@ -66,6 +63,12 @@ router.post(
   validate(createHotelSchema),
   hotelController.listHotel
 );
+
+router.post('/submit', protectRoute, hotelController.submitApplication);
+router.get('/my-status', protectRoute, hotelController.getMyApplication)
+
+router.get('/admin/all', protectRoute, hotelController.getAllApplications);
+router.patch('/admin/review/:applicationId', protectRoute, hotelController.reviewApplication);
 
 // Public Search Route (Matches your existing bento grid feed patterns)
 router.get('/', hotelController.searchHotels);

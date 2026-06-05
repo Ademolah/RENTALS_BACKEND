@@ -92,3 +92,6 @@ Stack: ReferenceError: processAgencyApplication is not defined
     at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
     at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-06-03 16:25:55:2555] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-03 16:27:44:2744] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-03 19:32:08:328] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017

@@ -2,7 +2,7 @@ import { catchAsync } from '../utils/catchAsync.js';
 import AppError from '../utils/AppError.js';
 import * as propertyService from '../services/property.service.js';
 import { getAllProperties } from '../services/property.service.js';
-
+import { User } from '../models/User.js';
 
 export const createProperty = catchAsync(async (req, res, next) => {
   // 1. Security Check
@@ -170,3 +170,42 @@ export const deleteProperty = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
+export const togglePropertySave = async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+    const userId = req.user.id; 
+
+    // 1. Locate the authenticated user profile document using your User model inside the property controller
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: "Profile session missing." });
+    }
+
+    // 2. Toggle item logic: Check if the property already exists in the collection array
+    const isSaved = user.savedCollections.includes(propertyId);
+    
+    if (isSaved) {
+      // Pull/Remove if already saved
+      user.savedCollections.pull(propertyId);
+    } else {
+      // Push/Add if it's a new bookmark addition
+      user.savedCollections.push(propertyId);
+    }
+
+    await user.save();
+    
+    // 3. Return the fully refreshed user record back to your Zustand storage ecosystem
+    // Fully populate it if you want to immediately parse the listing components inside the dashboard
+    const populatedUser = await user.populate('savedCollections');
+
+    return res.status(200).json({
+      success: true,
+      message: isSaved ? "Removed from list" : "Added to list",
+      user: populatedUser
+    });
+
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};

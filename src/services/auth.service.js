@@ -42,10 +42,9 @@ export const registerUserAccount = async (userData) => {
 export const loginUserAccount = async (credentials) => {
   const { email, password } = credentials;
 
-  // 1. Locate the user by email
-  const user = await User.findOne({ email });
+  // 1. Locate the user by email AND populate their saved collections natively 🚀
+  const user = await User.findOne({ email }).populate('savedCollections');
   
-  // Security Best Practice: Use a generic error message so attackers don't know if the email exists
   if (!user) {
     throw new AppError('Invalid authentication credentials.', 401);
   }

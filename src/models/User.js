@@ -45,6 +45,12 @@ const UserSchema = new Schema(
       ref: 'Agency',
       default: null, // Remains null if the account is a standard retail renter/buyer
     },
+    savedCollections: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Property', // 👈 Make sure this matches the exact string name of your Property model
+      }
+    ],
   },
   {
     timestamps: true,

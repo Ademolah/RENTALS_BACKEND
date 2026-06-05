@@ -67,5 +67,6 @@ router.post(
 );
 
 router.get('/search', propertyController.searchProperties)
+router.post('/:id/save', protectRoute, propertyController.togglePropertySave);
 
 export default router;

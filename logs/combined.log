@@ -342,3 +342,33 @@ Stack: ReferenceError: processAgencyApplication is not defined
 [2026-06-03 09:47:40:4740] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-03 09:47:46:4746] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-03 11:24:49:2449] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-03 12:01:13:113] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-03 12:38:59:3859] warn: [PATCH /api/v1/reservations/6a1f467f1d08f9a724b1ab17/confirm] ⚠️ The resource matching path /api/v1/reservations/6a1f467f1d08f9a724b1ab17/confirm could not be located on this server.
+[2026-06-03 12:39:05:395] warn: [PATCH /api/v1/reservations/6a1f467f1d08f9a724b1ab17/confirm] ⚠️ The resource matching path /api/v1/reservations/6a1f467f1d08f9a724b1ab17/confirm could not be located on this server.
+[2026-06-03 12:41:53:4153] warn: [PATCH /api/v1/hotels/reservations/6a1f467f1d08f9a724b1ab17/confirm] ⚠️ The resource matching path /api/v1/hotels/reservations/6a1f467f1d08f9a724b1ab17/confirm could not be located on this server.
+[2026-06-03 16:25:55:2555] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-03 16:27:44:2744] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-03 19:32:08:328] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-03 19:45:13:4513] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:19:14:1914] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:24:14:2414] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:24:29:2429] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:24:38:2438] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:25:37:2537] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:25:41:2541] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:27:57:2757] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:28:38:2838] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 09:31:57:3157] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 19:48:39:4839] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-04 19:52:02:522] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 11:49:58:4958] warn: [POST /api/v1/hotels/submit] ⚠️ You already have a pending registration application in review.
+[2026-06-05 18:11:45:1145] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:13:46:1346] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:16:00:160] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:18:09:189] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:21:05:215] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:21:52:2152] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:22:01:221] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:22:24:2224] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 18:30:32:3032] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-05 19:07:22:722] info: 📡 MongoDB Engine Engaged: localhost

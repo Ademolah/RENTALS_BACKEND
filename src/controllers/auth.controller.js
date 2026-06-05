@@ -101,11 +101,7 @@ export const inviteAgent = catchAsync(async (req, res, next) => {
   const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
   const magicLink = `${frontendUrl}/agent/accept-invite?token=${inviteToken}`;
 
-  // 5. SURGICAL LOGGING: Output directly to backend terminal
-  // console.log('\n===================================================================');
-  // console.log(`🚀 [MAGIC LINK GENERATED FOR]: ${email}`);
-  // console.log(`🔗 [URL]: ${magicLink}`);
-  // console.log('===================================================================\n');
+  
 
   // 6. Return Payload directly to Frontend
   res.status(200).json({
