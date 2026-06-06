@@ -6,7 +6,7 @@ import { protectRoute } from '../middleware/auth.middleware.js'
 const router = Router();
 
 
-router.get('/agencies', protectRoute, adminController.getPendingAgencies)
-router.patch('/agency/:id/review', protectRoute, adminController.reviewCorporateAgency)
+router.get('/applications', protectRoute, adminController.getPendingApplications);
+router.patch('/applications/:id/review', protectRoute, adminController.reviewApplication);
 
 export default router;
