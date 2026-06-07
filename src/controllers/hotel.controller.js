@@ -4,7 +4,7 @@ import { catchAsync } from '../utils/catchAsync.js'
 import { Reservation } from '../models/Reservation.js';
 import { HotelApplication } from '../models/HotelApplication.js';
 import { User } from '../models/User.js';
-import AppError from '../utils/appError.js';
+import AppError from '../utils/AppError.js';
 
 export const listHotel = catchAsync(async (req, res, next) => {
   // Extract file tracking optimization paths from Cloudinary middleware upload
