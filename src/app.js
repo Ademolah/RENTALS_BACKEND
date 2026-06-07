@@ -36,6 +36,14 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // BASE ROUTE FOOTPRINTS
 // =========================================================================
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: '🚀 Rentals Core Service API is fully operational and healthy.',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Simple Health Check Endpoint (Essential for cloud server monitoring)
 app.get('/api/v1/health', (req, res) => {
   res.status(200).json({
@@ -45,15 +53,14 @@ app.get('/api/v1/health', (req, res) => {
   });
 });
 
-
 // Mount all API routes
 app.use('/api/v1', apiRoutes);
-
 
 // Change '(*any)' to /.*/ without any quote marks
 app.all(/.*/, (req, res, next) => {
   next(new AppError(`The resource matching path ${req.originalUrl} could not be located on this server.`, 404));
 });
+
 // Central Global Error Processing Node: Every internal error funnels directly down into this
 app.use(globalErrorHandler);
 

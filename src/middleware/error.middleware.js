@@ -1,7 +1,10 @@
 import { logger } from "../config/logger.js";
+import AppError from "../utils/AppError.js"; // Ensure this is imported here for Mongoose handlers
 
 // Helper to format clean operational responses during production
 const sendErrorProd = (err, res) => {
+  if (res.headersSent) return; // 🛡️ Guard against double responses
+
   if (err.isOperational) {
     // Trusted operational error: send message securely to client
     return res.status(err.statusCode).json({
@@ -14,12 +17,14 @@ const sendErrorProd = (err, res) => {
   console.error('💥 SYSTEM ERROR LOG:', err);
   return res.status(500).json({
     status: 'error',
-    message: 'An internal optimization event occurred. Please try again later.',
+    message: 'Something went wrong on our end. Our engineering team has been notified.',
   });
 };
 
 // Helper to format verbose responses during development
 const sendErrorDev = (err, res) => {
+  if (res.headersSent) return; // 🛡️ Guard against double responses
+
   return res.status(err.statusCode).json({
     status: err.status,
     message: err.message,
@@ -33,7 +38,7 @@ export const globalErrorHandler = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
-
+  // 1. Log metrics to your winston/custom logger backend
   if (err.statusCode >= 500) {
     // 500s are critical server crashes
     logger.error(`[${req.method} ${req.originalUrl}] ❌ ${err.message}\nStack: ${err.stack}`);
@@ -42,26 +47,13 @@ export const globalErrorHandler = (err, req, res, next) => {
     logger.warn(`[${req.method} ${req.originalUrl}] ⚠️ ${err.message}`);
   }
 
-  // 2. Development Mode: Give us all the details to fix it quickly
-  if (process.env.NODE_ENV === 'development') {
-    res.status(err.statusCode).json({
-      status: err.status,
-      error: err,
-      message: err.message,
-      stack: err.stack, // Shows the exact file and line number
-    });
+  // 🛡️ CRITICAL DEFENSIVE GUARD: If headers were already sent by previous middlewares, 
+  // skip our handlers and pass to standard Express finalization to prevent crashes.
+  if (res.headersSent) {
+    return next(err);
   }
 
-  else {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.isOperational 
-        ? err.message 
-        : 'Something went wrong on our end. Our engineering team has been notified.',
-    });
-  }
-
-
+  // 2. Route the error to the correct single environment execution helper
   if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, res);
   } else {
