@@ -377,3 +377,25 @@ Stack: ReferenceError: processAgencyApplication is not defined
 [2026-06-06 15:16:39:1639] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-06 15:31:19:3119] warn: [GET /api/v1/admin/applications?status=PENDING] ⚠️ The resource matching path /api/v1/admin/applications?status=PENDING could not be located on this server.
 [2026-06-06 15:31:20:3120] warn: [GET /api/v1/admin/applications?status=PENDING] ⚠️ The resource matching path /api/v1/admin/applications?status=PENDING could not be located on this server.
+[2026-06-06 15:37:31:3731] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-06 18:14:56:1456] error: [PATCH /api/v1/admin/applications/6a22aca87f9dac60c4dbb4c1/review] ❌ HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+Stack: ValidationError: HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:81:5
+[2026-06-06 18:16:36:1636] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-06 18:16:50:1650] error: [PATCH /api/v1/admin/applications/6a22aca87f9dac60c4dbb4c1/review] ❌ HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+Stack: ValidationError: HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:81:5
+[2026-06-06 18:17:20:1720] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-07 15:16:11:1611] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-07 15:20:36:2036] warn: [GET /api/v1/agency/agents] ⚠️ The resource matching path /api/v1/agency/agents could not be located on this server.
+[2026-06-07 15:20:37:2037] warn: [GET /api/v1/agency/agents] ⚠️ The resource matching path /api/v1/agency/agents could not be located on this server.
+[2026-06-07 15:21:12:2112] warn: [GET /api/v1/agencies/agents] ⚠️ The resource matching path /api/v1/agencies/agents could not be located on this server.
+[2026-06-07 15:21:12:2112] warn: [GET /api/v1/agencies/agents] ⚠️ The resource matching path /api/v1/agencies/agents could not be located on this server.

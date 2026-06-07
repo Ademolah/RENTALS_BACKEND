@@ -15,6 +15,8 @@ router.post(
   agencyController.registerAgency
 );
 
+router.get('/agents', protectRoute, agencyController.getAgencyAgents)
+
 
 
 export default router;

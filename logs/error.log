@@ -95,3 +95,17 @@ Stack: ReferenceError: processAgencyApplication is not defined
 [2026-06-03 16:25:55:2555] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
 [2026-06-03 16:27:44:2744] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
 [2026-06-03 19:32:08:328] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-06 18:14:56:1456] error: [PATCH /api/v1/admin/applications/6a22aca87f9dac60c4dbb4c1/review] ❌ HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+Stack: ValidationError: HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:81:5
+[2026-06-06 18:16:50:1650] error: [PATCH /api/v1/admin/applications/6a22aca87f9dac60c4dbb4c1/review] ❌ HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+Stack: ValidationError: HotelApplication validation failed: status: `Approved` is not a valid enum value for path `status`.
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:81:5
