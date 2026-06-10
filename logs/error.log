@@ -109,3 +109,6 @@ Stack: ValidationError: HotelApplication validation failed: status: `Approved` i
     at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
     at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
     at async file:///D:/RENTALS%20BACKEND/src/controllers/admin.controller.js:81:5
+[2026-06-08 12:37:11:3711] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-08 13:43:37:4337] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-08 14:38:50:3850] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017

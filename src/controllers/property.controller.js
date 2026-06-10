@@ -3,6 +3,7 @@ import AppError from '../utils/AppError.js';
 import * as propertyService from '../services/property.service.js';
 import { getAllProperties } from '../services/property.service.js';
 import { User } from '../models/User.js';
+import {v2 as cloudinary } from 'cloudinary'
 
 export const createProperty = catchAsync(async (req, res, next) => {
   // 1. Security Check
@@ -158,10 +159,46 @@ export const deleteProperty = catchAsync(async (req, res, next) => {
   const propertyId = req.params.id;
   const agencyId = req.user.agencyId;
 
+  // 1. Purge listing from MongoDB (Ensure your service uses findOneAndDelete to return the data)
   const deletedProperty = await propertyService.deleteProperty(propertyId, agencyId);
 
   if (!deletedProperty) {
-    return next(new Error('Property not found or you lack administrative authorization to purge it'));
+    return next(new AppError('Property not found or you lack administrative authorization to purge it', 404));
+  }
+
+  // 🟢 SURGICAL ALIGNMENT: Read directly from your live schema's 'mediaUrls' array
+  const propertiesMedia = deletedProperty.mediaUrls || [];
+
+  if (propertiesMedia.length > 0) {
+    try {
+      // Prepare parallel execution array for Cloudinary asset destruction
+      const deletionPromises = propertiesMedia.map((url) => {
+        if (typeof url === 'string' && url.startsWith('http')) {
+          
+          // Breaks the URL into segments: ["https:", "", "res.cloudinary.com", "dof4swtne", "image", "upload", "v1779824749", "rentals", "filename.jpg"]
+          const urlParts = url.split('/');
+          const uploadIndex = urlParts.indexOf('upload');
+          
+          if (uploadIndex !== -1) {
+            // Cuts everything after the version segment (/v1779824749/) -> ["rentals", "filename.jpg"]
+            const pathSegments = urlParts.slice(uploadIndex + 2).join('/');
+            
+            // Strips file extension (.jpg/.png) -> "rentals/filename" (Exact Cloudinary Public ID)
+            const publicId = pathSegments.split('.')[0];
+            
+            return cloudinary.uploader.destroy(publicId);
+          }
+        }
+        return Promise.resolve();
+      });
+
+      // Blast all delete requests concurrently to Cloudinary
+      await Promise.all(deletionPromises);
+      
+    } catch (cloudinaryError) {
+      // Non-blocking guard: logs storage issues without throwing a 500 error to the client
+      console.error('⚠️ Secondary Cloudinary media resource purge failed:', cloudinaryError);
+    }
   }
 
   // 204 status signifies standard successful resource destruction with no payload content returned
