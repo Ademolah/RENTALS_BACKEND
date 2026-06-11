@@ -11,31 +11,31 @@ const generateToken = (userId) => {
 };
 
 export const registerUserAccount = async (userData) => {
-  const { email, phoneNumber, password, firstName, lastName } = userData;
+  // Destructure the two direct fields
+  const { email, dialCode, phoneNumber, password, firstName, lastName } = userData;
 
-  // 1. Cross-reference database to check if the identity footprint already exists
+  // 1. Cross-reference database using the unified concatenated phoneNumber string
   const identityExists = await User.findOne({ $or: [{ email }, { phoneNumber }] });
   if (identityExists) {
     throw new AppError('An account with this email address or phone number already exists.', 400);
   }
 
-  // 2. Cryptographically hash the user's password (Salt rounds = 12 for strong security)
+  // 2. Cryptographically hash the user's password
   const salt = await bcrypt.genSalt(12);
   const passwordHash = await bcrypt.hash(password, salt);
 
-  // 3. Commit the new user profile records to MongoDB Atlas
+  // 3. Save directly to your MongoDB document collection
   const newUser = await User.create({
     email,
-    phoneNumber,
+    dialCode,    // 👈 Preserved cleanly for future filter metrics
+    phoneNumber, // 👈 Stored directly as the full international string "+226988736335"
     passwordHash,
     firstName,
     lastName,
-    role: 'USER', // Standard access token level by default
+    role: 'USER',
   });
 
-  // 4. Generate an active JWT session token for automatic onboarding login
   const token = generateToken(newUser._id);
-
   return { user: newUser, token };
 };
 

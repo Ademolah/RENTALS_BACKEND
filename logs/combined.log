@@ -418,3 +418,18 @@ Stack: ValidationError: HotelApplication validation failed: status: `Approved` i
 [2026-06-09 21:56:02:562] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
 [2026-06-09 21:57:06:576] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
 [2026-06-09 21:57:21:5721] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-10 16:23:20:2320] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-10 17:27:16:2716] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-10 17:27:42:2742] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-10 17:28:00:280] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-10 17:43:30:4330] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:30:49:3049] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:35:30:3530] warn: [POST /api/v1/auth/register] ⚠️ body.phoneNumber : Nigerian phone numbers must be at least 11 digits
+[2026-06-11 10:37:20:3720] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:42:46:4246] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:42:51:4251] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:43:01:431] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:43:04:434] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:55:19:5519] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-11 10:56:12:5612] warn: [POST /api/v1/auth/register] ⚠️ body.phoneNumber : Provide a valid local phone number without characters or spaces
+[2026-06-11 11:00:50:050] warn: [POST /api/v1/auth/register] ⚠️ body.phoneNumber : Provide a valid local phone number without characters or spaces

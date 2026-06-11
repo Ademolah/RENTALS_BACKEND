@@ -3,10 +3,18 @@ import { z } from 'zod';
 export const registerSchema = z.object({
   body: z.object({
     email: z.string({ required_error: 'Email address is mandatory' }).email('Provide a valid email address'),
+    
+    dialCode: z
+      .string({ required_error: 'Dial code is mandatory' })
+      .trim()
+      .regex(/^\+\d{1,4}$/, 'Invalid international dial code format'),
+      
+    // 🟢 SURGICAL UPDATE: Expects the concatenated layout containing the "+" prefix
     phoneNumber: z
       .string({ required_error: 'Phone number is mandatory' })
-      .min(11, 'Nigerian phone numbers must be at least 11 digits')
-      .max(14, 'Phone number format is too long'),
+      .trim()
+      .regex(/^\+\d{10,18}$/, 'Provide a valid full international phone number starting with +'),
+      
     password: z
       .string({ required_error: 'Password is required' })
       .min(8, 'Password must be a minimum of 8 characters long'),

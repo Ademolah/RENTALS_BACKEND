@@ -9,6 +9,12 @@ const UserSchema = new Schema(
       lowercase: true,
       trim: true,
     },
+    dialCode: {
+      type: String,
+      required: [true, 'International dial code is required'],
+      trim: true,
+      match: [/^\+\d{1,4}$/, 'Provide a valid international dial code (e.g., +234)'],
+    },
     phoneNumber: {
       type: String,
       required: [true, 'Nigerian phone number is required'],
@@ -64,8 +70,24 @@ const UserSchema = new Schema(
   }
 );
 
-// Performance Optimization: Indexing email and phone numbers for rapid login validation loops
-// UserSchema.index({ email: 1 });
-// UserSchema.index({ phoneNumber: 1 });
+
+UserSchema.virtual('fullPhoneNumber').get(function () {
+  // Gracefully fuses the pieces together if they both exist
+  if (this.dialCode && this.phoneNumber) {
+    return `${this.dialCode}${this.phoneNumber}`;
+  }
+  return this.phoneNumber || '';
+});
+
+// CRITICAL: Ensure virtuals are included when transforming documents to JSON or Objects
+UserSchema.set('toJSON', { 
+  virtuals: true,
+  transform(doc, ret) {
+    delete ret.passwordHash; // Keep your security gate intact
+    return ret;
+  }
+});
+
+UserSchema.set('toObject', { virtuals: true });
 
 export const User = model('User', UserSchema);
