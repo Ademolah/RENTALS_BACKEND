@@ -26,6 +26,7 @@ const Upload = (req, res, next) => {
 // Endpoint: GET /api/v1/properties/nearby
 // Public route: Anyone can search for properties near them
 router.get('/', propertyController.getProperties);
+router.get('/agency-portfolio', protectRoute, propertyController.getAgencyProperties);
 router.delete('/:id',protectRoute, propertyController.deleteProperty)
 router.patch('/:id', protectRoute, propertyController.updateProperty)
 router.get('/nearby', propertyController.getNearbyProperties)

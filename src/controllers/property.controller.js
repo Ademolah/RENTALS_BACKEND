@@ -81,6 +81,33 @@ export const getProperties = catchAsync(async (req, res, next) => {
   });
 });
 
+
+// Add this controller to handle scoped backend dashboard panels
+export const getAgencyProperties = catchAsync(async (req, res, next) => {
+  // 🎯 SURGICAL ENFORCEMENT: Hardcode the logged-in agent's/admin's agency context 
+  // onto the query object so they cannot view data from other companies.
+  const dashboardQuery = {
+    ...req.query,
+    agencyId: req.user.agencyId.toString(),
+  };
+
+  const result = await propertyService.getAllProperties(dashboardQuery);
+
+  res.status(200).json({
+    status: 'success',
+    results: result.properties.length,
+    pagination: {
+      total: result.total,
+      page: result.page,
+      limit: result.limit,
+      totalPages: result.totalPages,
+    },
+    data: {
+      properties: result.properties,
+    },
+  });
+});
+
 export const searchProperties = catchAsync(async (req, res, next) => {
   // 1. Clone the incoming frontend query parameters
   const frontendQuery = { ...req.query };
