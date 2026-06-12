@@ -11,7 +11,8 @@ export const createPropertySchema = z.object({
       'shortlet', 
       'land', 
       'commercial', 
-      'terraced'
+      'terraced',
+      'house_sale' // 👈 ADDED HERE
     ], { required_error: 'Property classification is required' }),
     pricePerAnnum: z.number({ required_error: 'Annual price is required' }).positive('Price must be positive'),
     serviceCharge: z.number().nonnegative().default(0),

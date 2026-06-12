@@ -6,6 +6,12 @@ import {User} from '../models/User.js'
  * CREATION: Commits a new luxury property listing to the database.
  */
 export const createListing = async (propertyData, agencyId) => {
+  // Defensive normalization for outright asset acquisitions
+  if (['land', 'house_sale'].includes(propertyData.propertyType)) {
+    propertyData.serviceCharge = 0;
+    propertyData.cautionFee = 0;
+  }
+
   // Inject the authenticated agent's agency ID into the payload
   const newProperty = await Property.create({
     ...propertyData,
@@ -34,7 +40,6 @@ export const findPropertiesNearMe = async (longitude, latitude, maxDistanceInMet
 
   return properties;
 };
-
 
 
 export const getAllProperties = async (queryString) => {
@@ -90,28 +95,35 @@ export const getAllProperties = async (queryString) => {
   // Extract unique agency IDs from the current page of properties
   const agencyIds = [...new Set(properties.map((p) => p.agencyId?.toString()).filter(Boolean))];
 
-  // Fetch only the agents associated with these specific properties
-  const agents = await User.find({
+  // 🎯 SURGICAL ADJUSTMENT: Query both AGENT and AGENCY_ADMIN roles to cover CEO-listed properties
+  const corporateContacts = await User.find({
     agencyId: { $in: agencyIds },
-    role: 'AGENT'
-  }).select('firstName lastName email phoneNumber agencyId').lean();
+    role: { $in: ['AGENT', 'AGENCY_ADMIN'] }
+  }).select('firstName lastName email phoneNumber agencyId role').lean();
 
   // Create an O(1) dictionary lookup table
-  const agentDictionary = agents.reduce((acc, agent) => {
-    acc[agent.agencyId.toString()] = agent;
+  const contactDictionary = corporateContacts.reduce((acc, user) => {
+    const key = user.agencyId.toString();
+    
+    // Prioritization Logic: If an AGENT is already mapped, don't let an AGENCY_ADMIN overwrite them.
+    // If empty or if replacing an admin entry with a dedicated agent, proceed with assignment.
+    if (!acc[key] || (user.role === 'AGENT' && acc[key].role === 'AGENCY_ADMIN')) {
+      acc[key] = user;
+    }
+    
     return acc;
   }, {});
 
-  // Attach the agent credentials to the property payloads
+  // Attach the calculated corporate credentials to the property payloads
   const enrichedProperties = properties.map((property) => {
-    const agentRecord = property.agencyId ? agentDictionary[property.agencyId.toString()] : null;
+    const contactRecord = property.agencyId ? contactDictionary[property.agencyId.toString()] : null;
     
     return {
       ...property,
-      agent: agentRecord ? {
-        name: `${agentRecord.firstName} ${agentRecord.lastName}`,
-        phone: agentRecord.phoneNumber,
-        email: agentRecord.email
+      agent: contactRecord ? {
+        name: `${contactRecord.firstName} ${contactRecord.lastName}`,
+        phone: contactRecord.phoneNumber,
+        email: contactRecord.email
       } : null
     };
   });
@@ -125,6 +137,7 @@ export const getAllProperties = async (queryString) => {
     properties: enrichedProperties, // 🚨 Pass the enriched array back to the controller
   };
 };
+
 
 export const updateProperty = async (propertyId, agencyId, updateData) => {
   // Scoping with agencyId prevents cross-agent tampering

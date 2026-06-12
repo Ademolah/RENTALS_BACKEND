@@ -55,7 +55,7 @@ export const reviewApplication = catchAsync(async (req, res, next) => {
     if (normalizedDecision === 'APPROVED') {
       await User.updateMany(
         { agencyId: applicationId }, 
-        { $set: { role: 'ADMIN_AGENCY', status: 'ACTIVE' } }
+        { $set: { role: 'AGENCY_ADMIN', status: 'ACTIVE' } }
       );
     } else {
       await User.updateMany(

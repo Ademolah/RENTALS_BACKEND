@@ -66,9 +66,10 @@ const PropertySchema = new Schema(
         'shortlet', 
         'land', 
         'commercial', 
-        'terraced'
+        'terraced',
+        'house_sale' // 👈 ADDED FOR OUTRIGHT SALE VALIDATION
       ],
-      message: 'Property type must be one of: house, penthouse, apartment, shortlet, land, commercial, or terraced'
+      message: 'Property type must be one of: house, penthouse, apartment, shortlet, land, commercial, terraced, or house_sale'
     },
     default: 'house',
     index: true // Crucial for optimizing performance when filtering the horizontal UI feeds
