@@ -18,10 +18,28 @@ const app = express();
 app.use(helmet());
 
 // 2. Cross-Origin Resource Sharing: Enforces that only your trusted client domains can request data
+// 2. Cross-Origin Resource Sharing: Dynamically verifies trusted client domains
+const allowedOrigins = [
+  'https://rentalsafrica.com', 
+  'https://www.rentalsafrica.com',                // Live Production Frontend
+  'http://localhost:5173',                     // Local Development (Vite default)
+  'http://localhost:3000'                      // Local Development (CRA default fallback)
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*', 
+  origin: function (origin, callback) {
+    // Allow server-to-server requests or tools like Postman (where origin is undefined)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Blocked by CORS policy: This origin is unauthorized.'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true // Crucial if you decide to pass secure cookies or sessions later
 }));
 
 // 3. Request Traffic Logger: Outputs incoming network latency metrics directly into the console
