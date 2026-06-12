@@ -56,6 +56,79 @@ app.get('/api/v1/health', (req, res) => {
 // Mount all API routes
 app.use('/api/v1', apiRoutes);
 
+// =========================================================================
+// AUTOMATED DYNAMIC SEO SITEMAP ARCHITECTURE
+// =========================================================================
+app.get('/sitemap.xml', async (req, res) => {
+  try {
+    const BASE_URL = 'https://rentalsafrica.com';
+
+    // Safely evaluate your Mongoose database models from your models path
+    const HotelModel = app.get('models')?.Hotel || (await import('./models/Hotel.js')).default;
+    const PropertyModel = app.get('models')?.Property || (await import('./models/Property.js')).default;
+
+    // Fetch only active records from your MongoDB cluster
+    const liveHotels = await HotelModel.find({ isAvailable: true }).select('_id updatedAt').lean();
+    const liveProperties = await PropertyModel.find({ isAvailable: true }).select('_id updatedAt').lean();
+
+    // Compile pure XML layout matrix stream
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+    // 1. Core Platform Master Landing Gateways
+    const coreRoutes = [
+      { path: '', changefreq: 'daily', priority: '1.0' },
+      { path: '/explore', changefreq: 'daily', priority: '0.9' },
+      { path: '/login', changefreq: 'monthly', priority: '0.3' }
+    ];
+
+    coreRoutes.forEach((route) => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${BASE_URL}${route.path}</loc>\n`;
+      xml += `    <changefreq>${route.changefreq}</changefreq>\n`;
+      xml += `    <priority>${route.priority}</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    // 2. Dynamic Hospitality Hotel Portfolios
+    liveHotels.forEach((hotel) => {
+      const stamp = hotel.updatedAt ? new Date(hotel.updatedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+      xml += `  <url>\n`;
+      xml += `    <loc>${BASE_URL}/hotels/${hotel._id}</loc>\n`;
+      xml += `    <lastmod>${stamp}</lastmod>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    // 3. Dynamic Rental and Asset Pipelines
+    liveProperties.forEach((property) => {
+      const stamp = property.updatedAt ? new Date(property.updatedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+      xml += `  <url>\n`;
+      xml += `    <loc>${BASE_URL}/properties/${property._id}</loc>\n`;
+      xml += `    <lastmod>${stamp}</lastmod>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    xml += `</urlset>`;
+
+    res.header('Content-Type', 'application/xml');
+    res.status(200).send(xml);
+
+  } catch (error) {
+    console.error('💥 ERROR COMPILED DURING DYNAMIC SITEMAP DISPATCH:', error);
+    // Graceful recovery: return empty layout set so the server never crashes in production
+    res.header('Content-Type', 'application/xml');
+    res.status(200).send(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>`);
+  }
+});
+
+// =========================================================================
+// FALLBACK ROUTE PROTECTIONS
+// =========================================================================
+
 // Change '(*any)' to /.*/ without any quote marks
 app.all(/.*/, (req, res, next) => {
   next(new AppError(`The resource matching path ${req.originalUrl} could not be located on this server.`, 404));
