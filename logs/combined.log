@@ -443,3 +443,6 @@ Stack: ValidationError: HotelApplication validation failed: status: `Approved` i
 [2026-06-12 14:34:12:3412] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-12 14:34:28:3428] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-12 15:04:31:431] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-12 15:04:45:445] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-12 15:36:06:366] warn: [POST /api/v1/agencies] ⚠️ body.hqAddress : Please provide a full, detailed address
+[2026-06-12 15:36:20:3620] warn: [POST /api/v1/agencies] ⚠️ An agency with this Corporate Name or CAC Number already exists.

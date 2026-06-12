@@ -7,12 +7,12 @@ export const registerAgency = catchAsync(async (req, res, next) => {
   // 1. Pass the validated Zod payload to our corporate service engine
   const newAgency = await agencyService.registerCorporateAgency(req.validated.body);
 
-  // 2. THE UPGRADE: Automatically promote the creator to an ADMIN and link the agency
-  const upgradedUser = await User.findByIdAndUpdate(
+  // 2. THE FIX: Link the agency to the user profile, but DO NOT upgrade the role yet!
+  const updatedUser = await User.findByIdAndUpdate(
     req.user._id, // The ID from our protectRoute middleware
     {
-      role: 'AGENCY_ADMIN', // The creator is the boss of the agency
-      agencyId: newAgency._id,
+      agencyId: newAgency._id, // Ties them to the pending agency application
+      // We purposefully DO NOT change role here. It stays 'USER' until approved.
     },
     { new: true, runValidators: true }
   );
@@ -20,13 +20,13 @@ export const registerAgency = catchAsync(async (req, res, next) => {
   // 3. Return the premium success response
   res.status(201).json({
     status: 'success',
-    message: 'Corporate agency registered successfully. Your account has been upgraded to ADMIN.',
+    message: 'Corporate agency registration submitted successfully. Your application is currently under review.',
     data: {
       agency: newAgency,
       user: {
-        id: upgradedUser._id,
-        role: upgradedUser.role,
-        agencyId: upgradedUser.agencyId,
+        id: updatedUser._id,
+        role: updatedUser.role, // Will cleanly remain 'USER'
+        agencyId: updatedUser.agencyId,
       }
     },
   });
