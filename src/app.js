@@ -21,9 +21,9 @@ app.use(helmet());
 // 2. Cross-Origin Resource Sharing: Dynamically verifies trusted client domains
 const allowedOrigins = [
   'https://rentalsafrica.com', 
-  'https://www.rentalsafrica.com',                // Live Production Frontend
-  'http://localhost:5173',                     // Local Development (Vite default)
-  'http://localhost:3000'                      // Local Development (CRA default fallback)
+  'https://www.rentalsafrica.com',                
+  // 'http://localhost:5173',                     
+  // 'http://localhost:3000'                      
 ];
 
 app.use(cors({
