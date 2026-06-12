@@ -159,14 +159,14 @@ export const deleteProperty = catchAsync(async (req, res, next) => {
   const propertyId = req.params.id;
   const agencyId = req.user.agencyId;
 
-  // 1. Purge listing from MongoDB (Ensure your service uses findOneAndDelete to return the data)
+  // 1. Purge listing from MongoDB
   const deletedProperty = await propertyService.deleteProperty(propertyId, agencyId);
 
   if (!deletedProperty) {
     return next(new AppError('Property not found or you lack administrative authorization to purge it', 404));
   }
 
-  // 🟢 SURGICAL ALIGNMENT: Read directly from your live schema's 'mediaUrls' array
+  // Read directly from your live schema's 'mediaUrls' array
   const propertiesMedia = deletedProperty.mediaUrls || [];
 
   if (propertiesMedia.length > 0) {
@@ -175,18 +175,23 @@ export const deleteProperty = catchAsync(async (req, res, next) => {
       const deletionPromises = propertiesMedia.map((url) => {
         if (typeof url === 'string' && url.startsWith('http')) {
           
-          // Breaks the URL into segments: ["https:", "", "res.cloudinary.com", "dof4swtne", "image", "upload", "v1779824749", "rentals", "filename.jpg"]
+          // Breaks the URL into segments: ["https:", "", "res.cloudinary.com", "dof4swtne", "video", "upload", ...]
           const urlParts = url.split('/');
           const uploadIndex = urlParts.indexOf('upload');
           
           if (uploadIndex !== -1) {
+            // 🟢 SURGICAL UPDATE: Sniff out if the asset type is "video" or "image" right before the /upload/ folder
+            const isVideo = urlParts[uploadIndex - 1] === 'video';
+            const resourceType = isVideo ? 'video' : 'image';
+
             // Cuts everything after the version segment (/v1779824749/) -> ["rentals", "filename.jpg"]
             const pathSegments = urlParts.slice(uploadIndex + 2).join('/');
             
-            // Strips file extension (.jpg/.png) -> "rentals/filename" (Exact Cloudinary Public ID)
+            // Strips file extension (.jpg/.png/.mp4) -> "rentals/filename" (Exact Cloudinary Public ID)
             const publicId = pathSegments.split('.')[0];
             
-            return cloudinary.uploader.destroy(publicId);
+            // 🟢 SURGICAL UPDATE: Pass the precise resource_type configuration block to Cloudinary
+            return cloudinary.uploader.destroy(publicId, { resource_type: resourceType });
           }
         }
         return Promise.resolve();

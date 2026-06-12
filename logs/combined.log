@@ -433,3 +433,5 @@ Stack: ValidationError: HotelApplication validation failed: status: `Approved` i
 [2026-06-11 10:55:19:5519] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-11 10:56:12:5612] warn: [POST /api/v1/auth/register] ⚠️ body.phoneNumber : Provide a valid local phone number without characters or spaces
 [2026-06-11 11:00:50:050] warn: [POST /api/v1/auth/register] ⚠️ body.phoneNumber : Provide a valid local phone number without characters or spaces
+[2026-06-11 11:03:17:317] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-12 01:07:43:743] info: 📡 MongoDB Engine Engaged: localhost
