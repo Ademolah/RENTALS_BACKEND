@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 
 import AppError from './utils/AppError.js';
 import { globalErrorHandler } from './middleware/error.middleware.js';
@@ -63,13 +64,18 @@ app.get('/sitemap.xml', async (req, res) => {
   try {
     const BASE_URL = 'https://rentalsafrica.com';
 
-    // Safely evaluate your Mongoose database models from your models path
-    const HotelModel = app.get('models')?.Hotel || (await import('./models/Hotel.js')).default;
-    const PropertyModel = app.get('models')?.Property || (await import('./models/Property.js')).default;
+    // Pull models safely from Mongoose's active instance cache matrix
+    const HotelModel = mongoose.models.Hotel;
+    const PropertyModel = mongoose.models.Property;
 
-    // Fetch only active records from your MongoDB cluster
-    const liveHotels = await HotelModel.find({ isAvailable: true }).select('_id updatedAt').lean();
-    const liveProperties = await PropertyModel.find({ isAvailable: true }).select('_id updatedAt').lean();
+    // Fallback protection check: execution logs warnings if boot pool is incomplete
+    if (!HotelModel || !PropertyModel) {
+      console.warn('⚠️ SEO Warning: Core database models not found in Mongoose cache layout yet.');
+    }
+
+    // Fetch only active records from your MongoDB cluster if models are resolved
+    const liveHotels = HotelModel ? await HotelModel.find({ isAvailable: true }).select('_id updatedAt').lean() : [];
+    const liveProperties = PropertyModel ? await PropertyModel.find({ isAvailable: true }).select('_id updatedAt').lean() : [];
 
     // Compile pure XML layout matrix stream
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
