@@ -65,7 +65,7 @@ connectDB();
 // =========================================================================
 app.get('/sitemap.xml', async (req, res) => {
   try {
-    const BASE_URL = 'https://www.rentalsafrica.com';
+    const BASE_URL = 'https://rentalsafrica.com';
 
     // Access database models safely via Express or directly from your Mongoose cluster
     const HotelModel = app.get('models')?.Hotel || (await import('./models/Hotel.js')).default;
