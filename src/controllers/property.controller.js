@@ -82,19 +82,10 @@ export const getProperties = catchAsync(async (req, res, next) => {
 });
 
 
-
+// Add this controller to handle scoped backend dashboard panels
 export const getAgencyProperties = catchAsync(async (req, res, next) => {
-  // 🎯 DEFENSIVE GUARD: If the logged-in user doesn't have an agencyId, block gracefully
-  if (!req.user?.agencyId) {
-    return res.status(200).json({
-      status: 'success',
-      results: 0,
-      pagination: { total: 0, page: 1, limit: 10, totalPages: 0 },
-      data: { properties: [] }, // Return a clean empty array instead of crashing the server
-    });
-  }
-
-  // 🎯 SURGICAL ENFORCEMENT: Safely extract the agency context string
+  // 🎯 SURGICAL ENFORCEMENT: Hardcode the logged-in agent's/admin's agency context 
+  // onto the query object so they cannot view data from other companies.
   const dashboardQuery = {
     ...req.query,
     agencyId: req.user.agencyId.toString(),
@@ -116,7 +107,6 @@ export const getAgencyProperties = catchAsync(async (req, res, next) => {
     },
   });
 });
-
 
 export const searchProperties = catchAsync(async (req, res, next) => {
   // 1. Clone the incoming frontend query parameters
