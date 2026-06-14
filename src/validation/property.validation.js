@@ -11,6 +11,7 @@ export const createPropertySchema = z.object({
       'shortlet', 
       'land', 
       'commercial', 
+      'bungalow',
       'terraced',
       'house_sale' // 👈 ADDED HERE
     ], { required_error: 'Property classification is required' }),

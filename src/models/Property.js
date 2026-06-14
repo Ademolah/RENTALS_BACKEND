@@ -67,6 +67,7 @@ const PropertySchema = new Schema(
         'land', 
         'commercial', 
         'terraced',
+        'bungalow',
         'house_sale' // 👈 ADDED FOR OUTRIGHT SALE VALIDATION
       ],
       message: 'Property type must be one of: house, penthouse, apartment, shortlet, land, commercial, terraced, or house_sale'
