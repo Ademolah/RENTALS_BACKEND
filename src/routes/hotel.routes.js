@@ -54,6 +54,8 @@ const parseHotelMultipartBody = (req, res, next) => {
 };
 
 
+router.get('/owned-asset', protectRoute, hotelController.getOwnedHotelAsset);
+
 // Authenticated Premium Ingestion Pipeline
 router.post(
   '/', 

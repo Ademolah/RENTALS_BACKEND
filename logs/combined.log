@@ -527,3 +527,12 @@ Stack: ReferenceError: HotelApplication is not defined
     at Module.loginUserAccount (file:///D:/RENTALS%20BACKEND/src/services/auth.service.js:66:26)
     at async file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:23:27
 [2026-06-15 11:19:22:1922] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:19:46:1946] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:34:28:3428] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:35:49:3549] warn: [GET /api/v1/hotels/owned-asset] ⚠️ No authenticated hotel assets or approved application entries found.
+[2026-06-15 11:35:49:3549] warn: [GET /api/v1/hotels/owned-asset] ⚠️ No authenticated hotel assets or approved application entries found.
+[2026-06-15 11:36:22:3622] warn: [GET /api/v1/hotels/owned-asset] ⚠️ No authenticated hotel assets or approved application entries found.
+[2026-06-15 11:36:23:3623] warn: [GET /api/v1/hotels/owned-asset] ⚠️ No authenticated hotel assets or approved application entries found.
+[2026-06-15 11:39:13:3913] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:42:20:4220] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-15 11:42:29:4229] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.

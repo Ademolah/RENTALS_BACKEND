@@ -259,3 +259,36 @@ export const reviewApplication = catchAsync(async (req, res, next) => {
     }
   });
 });
+
+
+export const getOwnedHotelAsset = catchAsync(async (req, res, next) => {
+  // 1. Try to find a live listed hotel matching this user's corporate session
+  // If your model maps managing users via userId or agencyId, filter accordingly:
+  let hotel = await Hotel.findOne({ agencyId: req.user.agencyId });
+
+  // 2. Fallback Mechanism: If no live listing exists yet, extract details from their approved application
+  if (!hotel) {
+    const application = await HotelApplication.findOne({ userId: req.user._id, status: 'Approved' });
+    
+    if (application) {
+      // Form a temporary structural layout matching your client-side model expectancies
+      hotel = {
+        _id: null, // Signals the client to display an "Initial Setup Required" banner if needed
+        title: application.businessName,
+        state: application.state,
+        locality: 'Verification Ledger',
+        totalRooms: 50, // Standard default baseline capacity metrics
+        isPlaceholder: true
+      };
+    }
+  }
+
+  if (!hotel) {
+    return next(new AppError('No authenticated hotel assets or approved application entries found.', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: { hotel }
+  });
+});
