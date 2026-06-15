@@ -512,3 +512,18 @@ Stack: Error: Blocked by CORS policy: This origin is unauthorized.
 [2026-06-13 09:16:31:1631] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-13 09:35:43:3543] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-13 09:35:59:3559] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-14 20:00:50:050] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-15 09:57:09:579] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:04:32:432] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:15:36:1536] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:16:52:1652] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 11:17:47:1747] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-15 11:18:10:1810] error: [POST /api/v1/auth/login] ❌ HotelApplication is not defined
+Stack: ReferenceError: HotelApplication is not defined
+    at Module.loginUserAccount (file:///D:/RENTALS%20BACKEND/src/services/auth.service.js:66:26)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:23:27
+[2026-06-15 11:18:48:1848] error: [POST /api/v1/auth/login] ❌ HotelApplication is not defined
+Stack: ReferenceError: HotelApplication is not defined
+    at Module.loginUserAccount (file:///D:/RENTALS%20BACKEND/src/services/auth.service.js:66:26)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:23:27
+[2026-06-15 11:19:22:1922] info: 📡 MongoDB Engine Engaged: localhost

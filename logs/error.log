@@ -148,3 +148,12 @@ Stack: Error: Blocked by CORS policy: This origin is unauthorized.
     at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
     at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
     at internalNext (file:///D:/RENTALS%20BACKEND/node_modules/helmet/index.mjs:527:6)
+[2026-06-14 20:00:50:050] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-15 11:18:10:1810] error: [POST /api/v1/auth/login] ❌ HotelApplication is not defined
+Stack: ReferenceError: HotelApplication is not defined
+    at Module.loginUserAccount (file:///D:/RENTALS%20BACKEND/src/services/auth.service.js:66:26)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:23:27
+[2026-06-15 11:18:48:1848] error: [POST /api/v1/auth/login] ❌ HotelApplication is not defined
+Stack: ReferenceError: HotelApplication is not defined
+    at Module.loginUserAccount (file:///D:/RENTALS%20BACKEND/src/services/auth.service.js:66:26)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/auth.controller.js:23:27

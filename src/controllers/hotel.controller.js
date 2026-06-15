@@ -156,6 +156,9 @@ export const submitApplication = catchAsync(async (req, res, next) => {
     state
   });
 
+  // 🟢 CLEAN: We handle the hydration dynamically inside loginUserAccount service now,
+  // keeping this database collection beautifully decoupled.
+
   res.status(201).json({
     success: true,
     message: 'Hotel registration application submitted successfully to the verification ledger.',

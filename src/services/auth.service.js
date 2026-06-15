@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { User } from '../models/User.js';
 import AppError from '../utils/AppError.js';
+import { HotelApplication } from '../models/HotelApplication.js';
 
 // Helper utility to sign secure JSON Web Tokens
 const generateToken = (userId) => {
@@ -58,5 +59,20 @@ export const loginUserAccount = async (credentials) => {
   // 3. Issue a fresh JWT session token
   const token = generateToken(user._id);
 
-  return { user, token };
+  // 🟢 4. DYNAMIC HYDRATION MATRIX FOR PROFILE SYSTEM
+  // Convert the Mongoose document to a plain JavaScript object so we can append un-schemed properties
+  const userPayload = user.toObject();
+
+  // Search the ledger for this user's latest hotel application status
+  const latestHotelApp = await HotelApplication.findOne({ userId: user._id })
+    .sort({ createdAt: -1 });
+
+  // Sanitize and match the exact case format ('PENDING') your React fronted checks for
+  if (latestHotelApp) {
+    userPayload.hotelStatus = latestHotelApp.status.toUpperCase(); 
+  } else {
+    userPayload.hotelStatus = null;
+  }
+
+  return { user: userPayload, token };
 };
