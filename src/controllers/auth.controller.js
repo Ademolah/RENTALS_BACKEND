@@ -98,7 +98,7 @@ export const inviteAgent = catchAsync(async (req, res, next) => {
   );
 
   // 4. Construct the Frontend Gateway URL
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+  const frontendUrl = process.env.FRONTEND_URL 
   const magicLink = `${frontendUrl}/agent/accept-invite?token=${inviteToken}`;
 
   

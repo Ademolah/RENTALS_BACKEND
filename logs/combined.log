@@ -536,3 +536,30 @@ Stack: ReferenceError: HotelApplication is not defined
 [2026-06-15 11:39:13:3913] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-15 11:42:20:4220] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
 [2026-06-15 11:42:29:4229] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-15 12:09:58:958] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-15 14:31:19:3119] error: [GET /api/v1/properties/search?] ❌ Blocked by CORS policy: This origin is unauthorized.
+Stack: Error: Blocked by CORS policy: This origin is unauthorized.
+    at origin (file:///D:/RENTALS%20BACKEND/src/app.js:37:16)
+    at D:\RENTALS BACKEND\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\RENTALS BACKEND\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\RENTALS BACKEND\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at internalNext (file:///D:/RENTALS%20BACKEND/node_modules/helmet/index.mjs:527:6)
+[2026-06-15 14:31:20:3120] error: [GET /api/v1/properties/search?] ❌ Blocked by CORS policy: This origin is unauthorized.
+Stack: Error: Blocked by CORS policy: This origin is unauthorized.
+    at origin (file:///D:/RENTALS%20BACKEND/src/app.js:37:16)
+    at D:\RENTALS BACKEND\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (D:\RENTALS BACKEND\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (D:\RENTALS BACKEND\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at internalNext (file:///D:/RENTALS%20BACKEND/node_modules/helmet/index.mjs:527:6)
+[2026-06-16 09:15:58:1558] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-17 20:00:59:059] info: 📡 MongoDB Engine Engaged: localhost
