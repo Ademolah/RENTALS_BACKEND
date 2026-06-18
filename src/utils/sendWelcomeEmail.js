@@ -132,7 +132,7 @@ export const sendWelcomeEmail = async (name, email) => {
 
     <tr>
       <td align="center" style="padding:30px; background:#0F172A; color:#64748B; border-top:1px solid rgba(255,255,255,0.05);">
-        <p style="margin:0; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#94A3B8;">Rentals. Sovereign Real Estate</p>
+        <p style="margin:0; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#94A3B8;">Rentals Africa</p>
         <p style="margin:8px 0 0 0; font-size:12px; color:#475569;">Lagos • Abuja • Africa • 2026 Edition</p>
         <div style="margin-top:20px;">
             <a href="#" style="color:#64748B; text-decoration:none; font-size:11px; margin:0 12px; font-weight: 500;">Privacy Policy</a>

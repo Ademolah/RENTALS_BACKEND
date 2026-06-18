@@ -22,8 +22,8 @@ app.use(helmet());
 const allowedOrigins = [
   'https://rentalsafrica.com', 
   'https://www.rentalsafrica.com',                
-  'http://localhost:5173',                     
-  'http://localhost:3000'                      
+  // 'http://localhost:5173',                     
+  // 'http://localhost:3000'                      
 ];
 
 app.use(cors({

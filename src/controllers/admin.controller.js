@@ -5,6 +5,7 @@ import {Agency } from '../models/Agency.js'
 import { processAgencyApplication } from '../services/agency.service.js';
 import { User } from '../models/User.js';
 import { HotelApplication } from '../models/HotelApplication.js';
+import {sendUpgradeToAgencyEmail} from '../utils/sendUpgradeToAgencyEmail.js'
 
 // Inside your admin controller file:
 
@@ -57,6 +58,14 @@ export const reviewApplication = catchAsync(async (req, res, next) => {
         { agencyId: applicationId }, 
         { $set: { role: 'AGENCY_ADMIN', status: 'ACTIVE' } }
       );
+
+      const upgradedUsers = await User.find({ agencyId: applicationId });
+      const officialAgencyName = targetDocument.corporateName || 'Verified Partner';
+
+      upgradedUsers.forEach(user => {
+        sendUpgradeToAgencyEmail(officialAgencyName, user.email);
+      });
+
     } else {
       await User.updateMany(
         { agencyId: applicationId },
