@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 // CRITICAL CONFIG: Initialize environment configurations before importing internal modules
 dotenv.config();
 
+
 import app from './app.js';
 import { connectDB } from './config/db.js';
 

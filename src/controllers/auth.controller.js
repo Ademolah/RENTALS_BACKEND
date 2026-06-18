@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import AppError from '../utils/AppError.js';
 import { User } from '../models/User.js';
 import bcrypt from 'bcryptjs';
+import {sendWelcomeEmail} from '../utils/sendWelcomeEmail.js'
 
 export const register = catchAsync(async (req, res, next) => {
   // Pull from our new validated object
@@ -16,6 +17,8 @@ export const register = catchAsync(async (req, res, next) => {
       user,
     },
   });
+
+  sendWelcomeEmail(`${user.firstName} ${user.lastName}`, user.email);
 });
 
 // Add this below your register controller
