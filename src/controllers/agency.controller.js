@@ -2,22 +2,31 @@ import { catchAsync } from '../utils/catchAsync.js';
 import * as agencyService from '../services/agency.service.js';
 import { User } from '../models/User.js'; // We need the User model for the upgrade
 import { logger } from '../config/logger.js';
+import {sendAdminAgencyAlert} from '../utils/sendAdminAgencyAlert.js'
 
 export const registerAgency = catchAsync(async (req, res, next) => {
   // 1. Pass the validated Zod payload to our corporate service engine
   const newAgency = await agencyService.registerCorporateAgency(req.validated.body);
 
-  // 2. THE FIX: Link the agency to the user profile, but DO NOT upgrade the role yet!
+  // 2. Link the agency to the user profile, but DO NOT upgrade the role yet!
   const updatedUser = await User.findByIdAndUpdate(
-    req.user._id, // The ID from our protectRoute middleware
+    req.user._id, 
     {
-      agencyId: newAgency._id, // Ties them to the pending agency application
-      // We purposefully DO NOT change role here. It stays 'USER' until approved.
+      agencyId: newAgency._id, 
     },
     { new: true, runValidators: true }
   );
 
-  // 3. Return the premium success response
+  // 3. ADMIN NOTIFICATION PIPELINE
+  const superAdmins = await User.find({ role: 'SUPERADMIN' }).select('email');
+  
+  // Fire off the internal operations email to every admin asynchronously
+  superAdmins.forEach(admin => {
+    // 🎯 THE FIX: Passing the full 'updatedUser' object instead of just the firstName string
+    sendAdminAgencyAlert(admin.email, newAgency, updatedUser);
+  });
+
+  // 4. Return the premium success response
   res.status(201).json({
     status: 'success',
     message: 'Corporate agency registration submitted successfully. Your application is currently under review.',

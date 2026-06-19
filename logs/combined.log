@@ -621,3 +621,26 @@ Stack: Error: Blocked by CORS policy: This origin is unauthorized.
 [2026-06-18 22:45:18:4518] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-18 22:45:27:4527] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-18 22:47:52:4752] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-18 22:48:06:486] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-18 22:48:50:4850] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-18 23:20:21:2021] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-18 23:22:59:2259] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-18 23:24:20:2420] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-18 23:25:15:2515] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:22:35:2235] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:24:11:2411] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-19 11:26:33:2633] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:36:57:3657] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:37:32:3732] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:37:45:3745] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:38:13:3813] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:39:25:3925] warn: [POST /api/v1/agencies] ⚠️ An agency with this Corporate Name or CAC Number already exists.
+[2026-06-19 11:42:52:4252] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:42:58:4258] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:44:47:4447] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:44:54:4454] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:45:21:4521] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:55:32:5532] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 11:55:36:5536] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:06:01:61] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:09:43:943] info: 📡 MongoDB Engine Engaged: localhost
