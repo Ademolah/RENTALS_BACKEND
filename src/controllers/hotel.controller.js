@@ -5,6 +5,7 @@ import { Reservation } from '../models/Reservation.js';
 import { HotelApplication } from '../models/HotelApplication.js';
 import { User } from '../models/User.js';
 import AppError from '../utils/AppError.js';
+import { sendAdminHotelAlert } from '../utils/sendAdminHotelAlert.js';
 
 export const listHotel = catchAsync(async (req, res, next) => {
   // Extract file tracking optimization paths from Cloudinary middleware upload
@@ -155,6 +156,20 @@ export const submitApplication = catchAsync(async (req, res, next) => {
     registeredAddress,
     state
   });
+
+  // 🎯 DISPATCH OPERATION: Async alert execution pipeline for Super Admins
+  User.find({ role: 'SUPERADMIN' })
+    .select('email')
+    .then((admins) => {
+      if (admins && admins.length > 0) {
+        admins.forEach((admin) => {
+          sendAdminHotelAlert(admin.email, newApplication, req.user);
+        });
+      }
+    })
+    .catch((err) => {
+      console.error('🚨 Admin hotel alert broadcast pipeline encountered an error:', err);
+    });
 
   // 🟢 CLEAN: We handle the hydration dynamically inside loginUserAccount service now,
   // keeping this database collection beautifully decoupled.

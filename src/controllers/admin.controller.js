@@ -6,6 +6,7 @@ import { processAgencyApplication } from '../services/agency.service.js';
 import { User } from '../models/User.js';
 import { HotelApplication } from '../models/HotelApplication.js';
 import {sendUpgradeToAgencyEmail} from '../utils/sendUpgradeToAgencyEmail.js'
+import { sendUpgradeToHotelEmail } from '../utils/sendUpgradeToHotelEmail.js';
 
 // Inside your admin controller file:
 
@@ -95,10 +96,21 @@ export const reviewApplication = catchAsync(async (req, res, next) => {
     }
 
     if (normalizedDecision === 'APPROVED') {
-      await User.findByIdAndUpdate(
+      // Hydrate document on update to immediately extract details for notification loop
+      const upgradedUser = await User.findByIdAndUpdate(
         targetDocument.userId,
-        { $set: { role: 'HOTEL_ADMIN', status: 'ACTIVE' } }
-      );
+        { $set: { role: 'HOTEL_ADMIN', status: 'ACTIVE' } },
+        { new: true }
+      ).select('email firstName lastName');
+
+      if (upgradedUser) {
+        const officialHotelName = targetDocument.businessName || 'Verified Hotel Partner';
+        
+        // Fire off onboarding pipeline safely
+        sendUpgradeToHotelEmail(officialHotelName, upgradedUser.email, upgradedUser.firstName).catch((err) => {
+          console.error('🚨 Failed to execute async hotel onboarding email dispatch:', err);
+        });
+      }
     } else {
       await User.findByIdAndUpdate(
         targetDocument.userId,
@@ -117,7 +129,6 @@ export const reviewApplication = catchAsync(async (req, res, next) => {
     }
   });
 });
-
 
 
 

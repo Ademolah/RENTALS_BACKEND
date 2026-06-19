@@ -645,3 +645,63 @@ Stack: Error: Blocked by CORS policy: This origin is unauthorized.
 [2026-06-19 12:06:01:61] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-19 12:09:43:943] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-19 12:11:55:1155] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:15:09:159] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:30:08:308] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:33:47:3347] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:34:01:341] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:35:41:3541] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:36:51:3651] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:37:46:3746] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:38:29:3829] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 12:38:44:3844] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:05:32:532] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:05:47:547] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:06:20:620] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:06:25:625] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:06:28:628] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:06:53:653] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:08:25:825] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:08:30:830] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:08:37:837] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:08:52:852] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:08:56:856] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:09:00:90] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:09:19:919] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:09:25:925] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:10:10:1010] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:12:32:1232] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:13:26:1326] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:13:42:1342] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:21:50:2150] warn: [POST /api/v1/api/hotels/6a2fdd4a62e70d5cb15b7ef1/reviews] ⚠️ The resource matching path /api/v1/api/hotels/6a2fdd4a62e70d5cb15b7ef1/reviews could not be located on this server.
+[2026-06-19 13:33:54:3354] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:35:08:358] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:37:30:3730] warn: [GET /api/v1/hotels/6a2fdd4a62e70d5cb15b7ef1/reviews] ⚠️ You are not logged in. Please provide a valid session token.
+[2026-06-19 13:37:58:3758] warn: [GET /api/v1/hotels/6a2fdd4a62e70d5cb15b7ef1/reviews] ⚠️ You are not logged in. Please provide a valid session token.
+[2026-06-19 13:47:52:4752] warn: [GET /api/v1/hotels/6a1f27f71d08f9a724b1ab14/reviews] ⚠️ You are not logged in. Please provide a valid session token.
+[2026-06-19 13:50:14:5014] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:51:00:510] warn: [GET /api/v1/hotels/6a1f27f71d08f9a724b1ab14/reviews] ⚠️ You are not logged in. Please provide a valid session token.
+[2026-06-19 13:51:22:5122] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:52:01:521] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:57:33:5733] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:57:39:5739] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 13:58:39:5839] warn: [POST /api/v1/hotels/6a1f27f71d08f9a724b1ab14/reviews] ⚠️ You are not logged in. Please provide a valid session token.
+[2026-06-19 16:19:40:1940] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:21:36:2136] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:21:47:2147] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:26:08:268] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:27:04:274] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:27:26:2726] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:35:11:3511] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:35:19:3519] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:35:32:3532] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:35:52:3552] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:37:08:378] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:37:42:3742] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:38:13:3813] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:44:11:4411] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:46:20:4620] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:46:28:4628] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:46:58:4658] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:47:42:4742] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:48:30:4830] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-19 16:48:49:4849] info: 📡 MongoDB Engine Engaged: localhost

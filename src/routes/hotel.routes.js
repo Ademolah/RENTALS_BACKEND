@@ -4,8 +4,12 @@ import { validate } from '../middleware/validate.middleware.js';
 import { createHotelSchema } from '../validation/hotel.validation.js';
 import { protectRoute } from '../middleware/auth.middleware.js';
 import { upload } from '../middleware/upload.middleware.js';
+import reviewRouter from './review.routes.js';
 
 const router = Router();
+
+
+router.use('/:hotelId/reviews', reviewRouter);
 
 // 1. Surgical Media Interceptor Wrapper tailored for Hotels (Max 7 images)
 const HotelUpload = (req, res, next) => {
@@ -81,6 +85,7 @@ router.route('/:id')
 // Status Specific Hooks
 router.patch('/:id/confirm', protectRoute, hotelController.confirmReservation);
 router.patch('/:id/cancel', protectRoute, hotelController.cancelReservation);
+
 
 
 export default router;

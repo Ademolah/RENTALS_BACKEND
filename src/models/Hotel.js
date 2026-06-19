@@ -17,6 +17,8 @@ const RoomTypeSchema = new Schema({
   isAvailable: { type: Boolean, default: true }
 });
 
+
+
 const HotelSchema = new Schema(
   {
     title: {
@@ -66,9 +68,30 @@ const HotelSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    ratingsAverage: {
+      type: Number,
+      default: 0,
+      min: [0, 'Rating must be above 0'],
+      max: [5, 'Rating must be below 5.0'],
+      // A setter function to round ratings to 1 decimal point (e.g., 4.6666 -> 4.7)
+      set: val => Math.round(val * 10) / 10 
+    },
+    ratingsQuantity: {
+      type: Number,
+      default: 0,
+    },
   },
-  { timestamps: true }
+  { timestamps: true , 
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+  }
 );
+
+HotelSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'hotel',
+  localField: '_id'
+});
 
 // High-performance compound index for immediate filter feeds
 HotelSchema.index({ locality: 1, isAvailable: 1 });
