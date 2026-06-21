@@ -2,6 +2,7 @@ import { Router } from 'express';
 import * as hotelController from '../controllers/hotel.controller.js';
 import { validate } from '../middleware/validate.middleware.js';
 import { createHotelSchema } from '../validation/hotel.validation.js';
+import { updateHotelSchema } from '../validation/hotel.validation.js';
 import { protectRoute } from '../middleware/auth.middleware.js';
 import { upload } from '../middleware/upload.middleware.js';
 import reviewRouter from './review.routes.js';
@@ -75,6 +76,15 @@ router.get('/my-status', protectRoute, hotelController.getMyApplication)
 
 router.get('/admin/all', protectRoute, hotelController.getAllApplications);
 router.patch('/admin/review/:applicationId', protectRoute, hotelController.reviewApplication);
+router.patch(
+  '/:id', 
+  protectRoute, 
+  HotelUpload,
+  parseHotelMultipartBody,
+  validate(updateHotelSchema), // Use the permissive schema here
+  hotelController.updateHotel
+);
+router.delete('/:id', protectRoute, hotelController.deleteHotel)
 
 // Public Search Route (Matches your existing bento grid feed patterns)
 router.get('/', hotelController.searchHotels);

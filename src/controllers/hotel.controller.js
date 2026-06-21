@@ -6,6 +6,7 @@ import { HotelApplication } from '../models/HotelApplication.js';
 import { User } from '../models/User.js';
 import AppError from '../utils/AppError.js';
 import { sendAdminHotelAlert } from '../utils/sendAdminHotelAlert.js';
+import { v2 as cloudinary } from 'cloudinary';
 
 export const listHotel = catchAsync(async (req, res, next) => {
   // Extract file tracking optimization paths from Cloudinary middleware upload
@@ -22,6 +23,117 @@ export const listHotel = catchAsync(async (req, res, next) => {
   res.status(201).json({
     status: 'success',
     data: { hotel: newHotel }
+  });
+});
+
+export const updateHotel = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+
+  // 1. Validation has already been performed by the Zod middleware
+  if (!id || id === 'undefined') {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Operational failure: A valid property identifier path parameter is required.'
+    });
+  }
+
+  // 2. Prepare payload from validated req.body
+  let updatePayload = { ...req.body };
+
+  // 3. Process Cloudinary media collection
+  if (req.files && req.files.length > 0) {
+    const freshMediaUrls = req.files.map(file => file.path);
+    
+    if (req.body.appendMedia === 'true') {
+      // $push is used to append to existing array
+      updatePayload.$push = { mediaUrls: { $each: freshMediaUrls } };
+      delete updatePayload.mediaUrls; 
+    } else {
+      // Overwrite the entire array
+      updatePayload.mediaUrls = freshMediaUrls;
+    }
+  }
+
+  // 4. Atomic update restricted to the corporate agency session context
+  const updatedHotel = await Hotel.findOneAndUpdate(
+    { _id: id, agencyId: req.user.agencyId },
+    updatePayload,
+    { 
+      returnDocument: 'after', // Modern replacement for 'new: true'
+      runValidators: true 
+    }
+  );
+
+  if (!updatedHotel) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'No premium asset found matching this configuration within your corporate domain.'
+    });
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: { hotel: updatedHotel }
+  });
+});
+
+export const deleteHotel = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+
+  // Isolated configuration erasure bound explicitly to the authenticated corporate session context
+  const deletedHotel = await Hotel.findOneAndDelete({
+    _id: id,
+    agencyId: req.user.agencyId
+  });
+
+  // Protect inventory against unauthorized crossing-boundary modifications
+  if (!deletedHotel) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'No premium asset found matching this configuration within your corporate domain.'
+    });
+  }
+
+  // ☁️ SELF-CONTAINED CLOUDINARY STORAGE PURGE PIPELINE
+  if (deletedHotel.mediaUrls && deletedHotel.mediaUrls.length > 0) {
+    const targetedPublicIds = deletedHotel.mediaUrls
+      .map((url) => {
+        try {
+          const uploadSegment = '/upload/';
+          if (!url.includes(uploadSegment)) return null;
+
+          // Isolate everything downstream of the '/upload/' URL pattern split
+          const postUploadPath = url.split(uploadSegment)[1];
+          const pathTokens = postUploadPath.split('/');
+          
+          // Shift out the dynamic versioning signature if present (e.g., 'v1780318901')
+          if (pathTokens[0].startsWith('v')) {
+            pathTokens.shift();
+          }
+
+          // Reconstruct relative structural directory path and drop file extension
+          return pathTokens.join('/').split('.')[0];
+        } catch (err) {
+          return null; // Graceful fallback per structural iteration
+        }
+      })
+      .filter(Boolean);
+
+    // Bulk execute clearing sequence across the Cloudinary storage pipeline if identifiers exist
+    if (targetedPublicIds.length > 0) {
+      try {
+        await cloudinary.api.delete_resources(targetedPublicIds);
+      } catch (cloudinaryErr) {
+        // Intercept exceptions internally to prevent storage anomalies from halting database sync states
+        console.error('Asynchronous Cloudinary structural cleanup anomaly:', cloudinaryErr);
+      }
+    }
+  }
+
+  // Standard premium REST orchestration for permanent structural data clearance (204 No Content)
+  res.status(204).json({
+    status: 'success',
+    data: null
   });
 });
 

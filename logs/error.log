@@ -205,3 +205,42 @@ Stack: Error: Blocked by CORS policy: This origin is unauthorized.
     at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
     at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
     at internalNext (file:///D:/RENTALS%20BACKEND/node_modules/helmet/index.mjs:527:6)
+[2026-06-21 17:28:10:2810] error: [PATCH /api/v1/hotels/undefined] ❌ Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Hotel"
+Stack: CastError: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "Hotel"
+    at SchemaObjectId.cast (D:\RENTALS BACKEND\node_modules\mongoose\lib\schema\objectId.js:252:11)
+    at SchemaType.applySetters (D:\RENTALS BACKEND\node_modules\mongoose\lib\schemaType.js:1372:12)
+    at SchemaType.castForQuery (D:\RENTALS BACKEND\node_modules\mongoose\lib\schemaType.js:1798:17)
+    at cast (D:\RENTALS BACKEND\node_modules\mongoose\lib\cast.js:386:32)
+    at Query.cast (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:5212:12)
+    at Query._castConditions (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:2409:10)
+    at model.Query._findOneAndUpdate (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:3555:8)
+    at model.Query.exec (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:4797:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/hotel.controller.js:48:24
+[2026-06-21 21:45:48:4548] error: [PATCH /api/v1/hotels/6a1d82b969b85e993cc84be6] ❌ Cannot read properties of undefined (reading 'roomTypes')
+Stack: TypeError: Cannot read properties of undefined (reading 'roomTypes')
+    at file:///D:/RENTALS%20BACKEND/src/controllers/hotel.controller.js:44:17
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at file:///D:/RENTALS%20BACKEND/src/middleware/auth.middleware.js:34:3
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-06-21 21:54:24:5424] error: [PATCH /api/v1/hotels/6a1d82b969b85e993cc84be6] ❌ Validation failed: roomTypes.1.name: Room type name is required (e.g., Presidential Suite)
+Stack: ValidationError: Validation failed: roomTypes.1.name: Room type name is required (e.g., Presidential Suite)
+    at model.Query.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:4187:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.Query._findOneAndUpdate (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:3614:5)
+    at async model.Query.exec (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:4797:63)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/hotel.controller.js:90:24
+[2026-06-21 21:57:50:5750] error: [PATCH /api/v1/hotels/6a1d82b969b85e993cc84be6] ❌ Cast to embedded failed for value "[{"name": "Presidential Suite", "pricePerNight": 1250, "capacity": 4, "isAvailable": true}, {"name": "Executive Double", "pricePerNight": 850, "capacity": 2, "isAvailable": true}]" (type string) at path "roomTypes" because of "ObjectParameterError"
+Stack: CastError: Cast to embedded failed for value "[{"name": "Presidential Suite", "pricePerNight": 1250, "capacity": 4, "isAvailable": true}, {"name": "Executive Double", "pricePerNight": 850, "capacity": 2, "isAvailable": true}]" (type string) at path "roomTypes" because of "ObjectParameterError"
+    at SchemaDocumentArray.cast (D:\RENTALS BACKEND\node_modules\mongoose\lib\schema\documentArray.js:492:19)
+    at SchemaDocumentArray.cast (D:\RENTALS BACKEND\node_modules\mongoose\lib\schema\documentArray.js:407:17)
+    at SchemaType.applySetters (D:\RENTALS BACKEND\node_modules\mongoose\lib\schemaType.js:1372:12)
+    at castUpdateVal (D:\RENTALS BACKEND\node_modules\mongoose\lib\helpers\query\castUpdate.js:637:21)
+    at walkUpdatePath (D:\RENTALS BACKEND\node_modules\mongoose\lib\helpers\query\castUpdate.js:442:24)
+    at castUpdate (D:\RENTALS BACKEND\node_modules\mongoose\lib\helpers\query\castUpdate.js:148:7)
+    at model.Query._castUpdate (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:5027:10)
+    at model.Query._findOneAndUpdate (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:3577:34)
+    at model.Query.exec (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:4797:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
