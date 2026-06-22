@@ -244,3 +244,256 @@ Stack: CastError: Cast to embedded failed for value "[{"name": "Presidential Sui
     at model.Query._findOneAndUpdate (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:3577:34)
     at model.Query.exec (D:\RENTALS BACKEND\node_modules\mongoose\lib\query.js:4797:80)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[2026-06-22 07:53:26:5326] error: ❌ Critical Database Connection Failure: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[2026-06-22 11:03:58:358] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at read (D:\RENTALS BACKEND\node_modules\body-parser\lib\read.js:53:5)
+    at urlencodedParser (D:\RENTALS BACKEND\node_modules\body-parser\lib\types\urlencoded.js:57:5)
+[2026-06-22 11:03:58:358] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at read (D:\RENTALS BACKEND\node_modules\body-parser\lib\read.js:53:5)
+    at urlencodedParser (D:\RENTALS BACKEND\node_modules\body-parser\lib\types\urlencoded.js:57:5)
+[2026-06-22 11:08:00:80] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at read (D:\RENTALS BACKEND\node_modules\body-parser\lib\read.js:53:5)
+    at urlencodedParser (D:\RENTALS BACKEND\node_modules\body-parser\lib\types\urlencoded.js:57:5)
+[2026-06-22 11:08:00:80] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at read (D:\RENTALS BACKEND\node_modules\body-parser\lib\read.js:53:5)
+    at urlencodedParser (D:\RENTALS BACKEND\node_modules\body-parser\lib\types\urlencoded.js:57:5)
+[2026-06-22 11:08:27:827] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at read (D:\RENTALS BACKEND\node_modules\body-parser\lib\read.js:53:5)
+    at urlencodedParser (D:\RENTALS BACKEND\node_modules\body-parser\lib\types\urlencoded.js:57:5)
+[2026-06-22 11:08:27:827] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:113:18
+    at Array.forEach (<anonymous>)
+    at D:\RENTALS BACKEND\node_modules\express-mongo-sanitize\index.js:110:44
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at read (D:\RENTALS BACKEND\node_modules\body-parser\lib\read.js:53:5)
+    at urlencodedParser (D:\RENTALS BACKEND\node_modules\body-parser\lib\types\urlencoded.js:57:5)
+[2026-06-22 16:11:09:119] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\xss-clean\lib\index.js:8:30
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at file:///D:/RENTALS%20BACKEND/src/app.js:247:3
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+[2026-06-22 16:11:09:119] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\xss-clean\lib\index.js:8:30
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at file:///D:/RENTALS%20BACKEND/src/app.js:247:3
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+[2026-06-22 16:11:13:1113] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\xss-clean\lib\index.js:8:30
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at file:///D:/RENTALS%20BACKEND/src/app.js:247:3
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+[2026-06-22 16:11:13:1113] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\xss-clean\lib\index.js:8:30
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at file:///D:/RENTALS%20BACKEND/src/app.js:247:3
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+[2026-06-22 16:11:19:1119] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\xss-clean\lib\index.js:8:30
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at file:///D:/RENTALS%20BACKEND/src/app.js:247:3
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+[2026-06-22 16:11:19:1119] error: [GET /api/v1/properties/search?] ❌ Cannot set property query of #<IncomingMessage> which has only a getter
+Stack: TypeError: Cannot set property query of #<IncomingMessage> which has only a getter
+    at D:\RENTALS BACKEND\node_modules\xss-clean\lib\index.js:8:30
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)
+    at file:///D:/RENTALS%20BACKEND/src/app.js:247:3
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (D:\RENTALS BACKEND\node_modules\router\index.js:342:13)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:297:9
+[2026-06-22 17:10:25:1025] error: [GET /api/v1/properties/search?] ❌ skip is not defined
+Stack: ReferenceError: skip is not defined
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:87:22)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 17:10:25:1025] error: [GET /api/v1/properties/search?] ❌ skip is not defined
+Stack: ReferenceError: skip is not defined
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:87:22)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 17:11:01:111] error: [GET /api/v1/properties/search?] ❌ Cannot access 'page' before initialization
+Stack: ReferenceError: Cannot access 'page' before initialization
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:85:16)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 17:11:01:111] error: [GET /api/v1/properties/search?] ❌ Cannot access 'page' before initialization
+Stack: ReferenceError: Cannot access 'page' before initialization
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:85:16)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 17:11:21:1121] error: [GET /api/v1/properties/search?] ❌ limit is not defined
+Stack: ReferenceError: limit is not defined
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:85:29)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 17:11:21:1121] error: [GET /api/v1/properties/search?] ❌ limit is not defined
+Stack: ReferenceError: limit is not defined
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:85:29)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 17:11:30:1130] error: [GET /api/v1/properties/search?] ❌ limit is not defined
+Stack: ReferenceError: limit is not defined
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:85:29)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 17:11:30:1130] error: [GET /api/v1/properties/search?] ❌ limit is not defined
+Stack: ReferenceError: limit is not defined
+    at getAllProperties (file:///D:/RENTALS%20BACKEND/src/services/property.service.js:85:29)
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:145:31
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+[2026-06-22 18:07:15:715] error: [GET /api/v1/properties/reviews?propertyId=6a2c6eb46f47b6d558b290f3] ❌ mongoose is not defined
+Stack: ReferenceError: mongoose is not defined
+    at file:///D:/RENTALS%20BACKEND/src/controllers/property.controller.js:96:20
+    at file:///D:/RENTALS%20BACKEND/src/utils/catchAsync.js:7:5
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (D:\RENTALS BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (D:\RENTALS BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (D:\RENTALS BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (D:\RENTALS BACKEND\node_modules\router\lib\layer.js:152:17)
+    at D:\RENTALS BACKEND\node_modules\router\index.js:295:15
+    at processParams (D:\RENTALS BACKEND\node_modules\router\index.js:582:12)
+    at next (D:\RENTALS BACKEND\node_modules\router\index.js:291:5)

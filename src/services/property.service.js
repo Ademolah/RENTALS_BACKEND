@@ -1,6 +1,7 @@
 import { Property } from '../models/Property.js';
 import AppError from '../utils/AppError.js';
 import {User} from '../models/User.js'
+import { Agency } from '../models/Agency.js';
 
 /**
  * CREATION: Commits a new luxury property listing to the database.
@@ -90,7 +91,7 @@ export const getAllProperties = async (queryString) => {
   const total = await Property.countDocuments(filter);
 
   // =======================================================================
-  // 5. PREMIUM CONCIERGE MAPPING (The Surgical Injection)
+  // 5. PREMIUM CONCIERGE & MULTI-MODEL DICTIONARY MAPPING
   // =======================================================================
   // Extract unique agency IDs from the current page of properties
   const agencyIds = [...new Set(properties.map((p) => p.agencyId?.toString()).filter(Boolean))];
@@ -101,12 +102,16 @@ export const getAllProperties = async (queryString) => {
     role: { $in: ['AGENT', 'AGENCY_ADMIN'] }
   }).select('firstName lastName email phoneNumber agencyId role').lean();
 
-  // Create an O(1) dictionary lookup table
+  // 🟢 SURGICAL ADDITION: Bulk-query Agency Profiles for branding attributes
+  const agencyProfiles = await Agency.find({
+    _id: { $in: agencyIds }
+  }).select('corporateName createdAt').lean();
+
+  // Create an O(1) dictionary lookup table for User contacts
   const contactDictionary = corporateContacts.reduce((acc, user) => {
     const key = user.agencyId.toString();
     
     // Prioritization Logic: If an AGENT is already mapped, don't let an AGENCY_ADMIN overwrite them.
-    // If empty or if replacing an admin entry with a dedicated agent, proceed with assignment.
     if (!acc[key] || (user.role === 'AGENT' && acc[key].role === 'AGENCY_ADMIN')) {
       acc[key] = user;
     }
@@ -114,12 +119,26 @@ export const getAllProperties = async (queryString) => {
     return acc;
   }, {});
 
-  // Attach the calculated corporate credentials to the property payloads
+  // 🟢 SURGICAL ADDITION: Create an O(1) dictionary lookup table for Agency Profiles
+  const agencyDictionary = agencyProfiles.reduce((acc, agency) => {
+    acc[agency._id.toString()] = agency;
+    return acc;
+  }, {});
+
+  // Attach the calculated corporate credentials and branding metadata directly to properties
   const enrichedProperties = properties.map((property) => {
-    const contactRecord = property.agencyId ? contactDictionary[property.agencyId.toString()] : null;
+    const agencyKey = property.agencyId ? property.agencyId.toString() : null;
+    const contactRecord = agencyKey ? contactDictionary[agencyKey] : null;
+    
+    // 🟢 SURGICAL ADDITION: Retrieve agency profile details from dictionary lookup
+    const agencyRecord = agencyKey ? agencyDictionary[agencyKey] : null;
     
     return {
       ...property,
+      // 🟢 SURGICAL INJECTION: Expose clean variables to frontend translation mappings safely
+      corporateName: agencyRecord?.corporateName || 'Premium Agency Partner',
+      agencyCreatedAt: agencyRecord?.createdAt || property.createdAt, // Safe fallback
+      
       agent: contactRecord ? {
         name: `${contactRecord.firstName} ${contactRecord.lastName}`,
         phone: contactRecord.phoneNumber,

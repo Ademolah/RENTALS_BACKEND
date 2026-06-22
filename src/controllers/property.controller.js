@@ -1,9 +1,12 @@
+import mongoose from 'mongoose';
 import { catchAsync } from '../utils/catchAsync.js';
 import AppError from '../utils/AppError.js';
 import * as propertyService from '../services/property.service.js';
 import { getAllProperties } from '../services/property.service.js';
 import { User } from '../models/User.js';
 import {v2 as cloudinary } from 'cloudinary'
+import { Review } from '../models/PropertyReview.js';
+
 
 export const createProperty = catchAsync(async (req, res, next) => {
   // 1. Security Check
@@ -59,6 +62,63 @@ export const getNearbyProperties = catchAsync(async (req, res, next) => {
     data: {
       properties,
     },
+  });
+});
+
+
+export const createReview = catchAsync(async (req, res, next) => {
+  // Extract tracking points cleanly
+  const { review, rating, propertyId } = req.body;
+  const userId = req.user.id; // Populated by your auth gate middleware
+
+  const newReview = await Review.create({
+    review,
+    rating,
+    propertyId,
+    userId
+  });
+
+  res.status(201).json({
+    status: 'success',
+    data: { review: newReview }
+  });
+});
+
+export const getPropertyReviews = catchAsync(async (req, res, next) => {
+  const { propertyId } = req.query;
+
+  if (!propertyId) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Property ID query parameter is required.'
+    });
+  }
+
+  // Cast safely to ObjectId if valid to eliminate database type mismatches
+  const targetId = mongoose.Types.ObjectId.isValid(propertyId)
+    ? new mongoose.Types.ObjectId(propertyId)
+    : propertyId;
+
+  // Query both types simultaneously to guarantee a match
+  const reviews = await Review.find({
+    $or: [
+      { propertyId: propertyId },
+      { propertyId: targetId }
+    ]
+  })
+    .populate({
+      path: 'userId',
+      select: 'firstName lastName profilePicture'
+    })
+    .sort('-createdAt')
+    .lean();
+
+  res.status(200).json({
+    status: 'success',
+    results: reviews.length,
+    data: {
+      reviews
+    }
   });
 });
 
@@ -159,6 +219,7 @@ export const searchProperties = catchAsync(async (req, res, next) => {
     },
   });
 });
+
 export const updateProperty = catchAsync(async (req, res, next) => {
   const propertyId = req.params.id;
   const agencyId = req.user.agencyId; // Extracted safely from auth middleware

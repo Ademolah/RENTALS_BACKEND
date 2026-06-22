@@ -32,6 +32,10 @@ router.patch('/:id', protectRoute, propertyController.updateProperty)
 router.get('/nearby', propertyController.getNearbyProperties)
 
 
+router.post('/reviews', protectRoute, propertyController.createReview);
+router.get('/reviews', propertyController.getPropertyReviews);
+
+
 // Middleware to format flat FormData strings into the strict types Zod expects
 const parseMultipartBody = (req, res, next) => {
   if (req.body) {

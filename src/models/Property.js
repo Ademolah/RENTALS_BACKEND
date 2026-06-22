@@ -75,6 +75,17 @@ const PropertySchema = new Schema(
     default: 'house',
     index: true // Crucial for optimizing performance when filtering the horizontal UI feeds
   },
+  averageRating: {
+    type: Number,
+    default: 0,
+    min: [0, 'Rating must be above 0.0'],
+    max: [5, 'Rating must be below 5.0'],
+    set: val => Math.round(val * 10) / 10 // Ensures 4.6666 becomes 4.7
+  },
+  numberOfReviews: {
+    type: Number,
+    default: 0
+  },
     agencyId: {
       type: Schema.Types.ObjectId,
       ref: 'Agency',

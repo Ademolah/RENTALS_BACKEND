@@ -13,7 +13,7 @@ export const protectRoute = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    return next(new AppError('You are not logged in. Please provide a valid session token.', 401));
+    return next(new AppError('You are not logged in', 401));
   }
 
   // 2. Verify the cryptographic signature of the token using our secret key
