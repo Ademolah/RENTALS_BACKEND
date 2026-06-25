@@ -2,6 +2,8 @@ import { TourBooking } from '../models/TourBooking.js';
 import { Property } from '../models/Property.js';
 import AppError  from '../utils/AppError.js'
 import {catchAsync} from '../utils/catchAsync.js'
+import { User } from '../models/User.js';
+import { sendTourBookingEmail } from '../utils/sendTourBookingEmail.js';
 
 // ============================================================================
 // PUBLIC INGESTION: Handle incoming tour requests from the Modal
@@ -16,7 +18,17 @@ export const requestTour = catchAsync(async (req, res, next) => {
     return next(new AppError('Target property could not be located in the global registry.', 404));
   }
 
-  // 2. Generate the booking record
+  // 2. Locate the designated Agency Administrator for this layout route
+  const agencyAdmin = await User.findOne({ 
+    agencyId: property.agencyId,
+    role: 'AGENCY_ADMIN' 
+  });
+
+  if (!agencyAdmin) {
+    console.warn(`⚠️ [Routing Warning]: Tour booked for property ${property._id}, but no active User with role 'AGENCY_ADMIN' matches agencyId ${property.agencyId}.`);
+  }
+
+  // 3. Generate the booking record
   const booking = await TourBooking.create({
     propertyId: property._id,
     agencyId: property.agencyId, // 🎯 Automatically routes it to the correct dashboard
@@ -32,7 +44,18 @@ export const requestTour = catchAsync(async (req, res, next) => {
     clientNotes,
   });
 
-  // 3. Return clean confirmation
+  // 4. Safely trigger the email engine asynchronously if an administrator exists
+  if (agencyAdmin && agencyAdmin.email) {
+    // Fire and forget without blocking the HTTP response cycle
+    sendTourBookingEmail(
+      { name: agencyAdmin.firstName || 'Administrator', email: agencyAdmin.email },
+      { fullName, email, phone, clientNotes },
+      { date, timeSlot },
+      { title: property.title || 'Premium Property Asset', id: property._id.toString() }
+    ).catch(err => console.error('🛡️ Async Background Email Stream Error:', err));
+  }
+
+  // 5. Return clean confirmation
   return res.status(201).json({
     status: 'success',
     message: 'Tour request has been successfully transmitted to the concierge desk.',
