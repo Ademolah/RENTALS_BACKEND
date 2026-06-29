@@ -1,5 +1,7 @@
 import  { Reservation }  from '../models/Reservation.js';
 import { Hotel } from '../models/Hotel.js';
+import { sendHotelReservationEmail } from '../utils/sendHotelReservationEmail.js';
+import { User } from '../models/User.js';
 
 // @desc    Create a fresh verified hotel reservation
 // @route   POST /api/reservations
@@ -67,6 +69,32 @@ export const createReservation = async (req, res) => {
             specialRequests,
             corporateId
         });
+
+        // =======================================================================
+        // 🚀 SURGICAL INJECTION: HOTEL ADMIN LOOKUP & PREMIUM EMAIL DISPATCH
+        // =======================================================================
+        try {
+            // Locate the dedicated manager tied directly to this hospitality asset
+            const hotelAdmin = await User.findOne({
+                agencyId: hotelItem.agencyId,
+                role: 'HOTEL_ADMIN'
+            }).lean();
+
+            if (hotelAdmin) {
+                // Pass data matching the refined notification signature
+                await sendHotelReservationEmail(
+                    { name: `${hotelAdmin.firstName} ${hotelAdmin.lastName}`, email: hotelAdmin.email },
+                    reservation,
+                    hotelItem
+                );
+            } else {
+                console.warn(`⚠️ [Notification Gateway Warning]: No HOTEL_ADMIN linked to agencyId: ${hotelItem.agencyId}`);
+            }
+        } catch (emailErr) {
+            // Caught safely so a mail delivery hiccup doesn't crash the user checkout process
+            console.error('🚨 [Notification Pipeline Exception]: Fallback triggered:', emailErr);
+        }
+        // =======================================================================
 
         res.status(201).json({
             success: true,

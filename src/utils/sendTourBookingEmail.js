@@ -1,13 +1,6 @@
 import nodemailer from 'nodemailer';
 
 
-/**
- * Dispatches a world-class, premium tour booking notification to the Agency Administrator
- * @param {Object} adminData - { name, email } of the targeted AGENCY_ADMIN
- * @param {Object} visitorData - { fullName, email, phone, clientNotes } of the explorer
- * @param {Object} scheduleData - { date, timeSlot } of the requested physical tour
- * @param {Object} propertyData - { title, id } of the viewed asset
- */
 export const sendTourBookingEmail = async (adminData, visitorData, scheduleData, propertyData) => {
   try {
     const transporter = nodemailer.createTransport({
