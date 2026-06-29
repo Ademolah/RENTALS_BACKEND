@@ -17,13 +17,12 @@ const app = express();
 // 1. Armor HTTP Headers: Protects against common vectors like XSS and clickjacking
 app.use(helmet());
 
-// 2. Cross-Origin Resource Sharing: Enforces that only your trusted client domains can request data
 // 2. Cross-Origin Resource Sharing: Dynamically verifies trusted client domains
 const allowedOrigins = [
   'https://rentalsafrica.com', 
   'https://www.rentalsafrica.com',                
-  'http://localhost:5173',                     
-  'http://localhost:3000'                      
+  // 'http://localhost:5173',                      
+  // 'http://localhost:3000'                      
 ];
 
 app.use(cors({
@@ -147,6 +146,14 @@ app.get('/sitemap.xml', async (req, res) => {
     res.header('Content-Type', 'application/xml');
     res.status(200).send(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>`);
   }
+});
+
+// =========================================================================
+// 🤖 AUTOMATED BOT INDEXING SHIELDING (API Crawler Control Matrix)
+// =========================================================================
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.status(200).send("User-agent: *\nDisallow: /");
 });
 
 // =========================================================================
