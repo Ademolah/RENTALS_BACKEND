@@ -1091,3 +1091,27 @@ Stack: Error: Blocked by CORS policy: This origin is unauthorized.
 [2026-06-29 18:23:09:239] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-29 18:23:14:2314] info: 📡 MongoDB Engine Engaged: localhost
 [2026-06-29 18:23:17:2317] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-29 18:23:51:2351] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-29 18:24:34:2434] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-30 15:12:16:1216] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-30 15:38:27:3827] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-30 18:04:21:421] error: [POST /api/v1/hotels] ❌ Hotel validation failed: agencyId: A hotel listing must be tied to a verified partner corporate entity
+Stack: ValidationError: Hotel validation failed: agencyId: A hotel listing must be tied to a verified partner corporate entity
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async Function.create (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:2747:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/hotel.controller.js:21:20
+[2026-06-30 18:04:36:436] error: [POST /api/v1/hotels] ❌ Hotel validation failed: agencyId: A hotel listing must be tied to a verified partner corporate entity
+Stack: ValidationError: Hotel validation failed: agencyId: A hotel listing must be tied to a verified partner corporate entity
+    at model.validate (D:\RENTALS BACKEND\node_modules\mongoose\lib\document.js:2864:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.$__save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:393:7)
+    at async model.save (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:667:5)
+    at async Function.create (D:\RENTALS BACKEND\node_modules\mongoose\lib\model.js:2747:5)
+    at async file:///D:/RENTALS%20BACKEND/src/controllers/hotel.controller.js:21:20
+[2026-06-30 18:05:58:558] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-30 18:06:07:67] warn: [POST /api/v1/auth/login] ⚠️ Invalid authentication credentials.
+[2026-06-30 19:05:44:544] info: 📡 MongoDB Engine Engaged: localhost
+[2026-06-30 19:06:40:640] info: 📡 MongoDB Engine Engaged: localhost

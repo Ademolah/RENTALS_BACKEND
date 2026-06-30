@@ -79,45 +79,51 @@ export const reviewApplication = catchAsync(async (req, res, next) => {
   // BRANCH B: HOTEL VENDOR CONTEXT
   // ==========================================
   if (determinedType === 'hotel') {
-    const currentStatus = targetDocument.status?.toLowerCase() || 'pending';
+  const currentStatus = targetDocument.status?.toLowerCase() || 'pending';
 
-    if (currentStatus !== 'pending') {
-      return next(new AppError(`This hotel application registration has already been resolved as ${targetDocument.status}.`, 400));
-    }
-
-    // 1. Commit status using system case mapping style ('Approved' or 'Rejected')
-    const hotelCaseDecision = normalizedDecision === 'APPROVED' ? 'Approved' : 'Rejected';
-    targetDocument.status = hotelCaseDecision;
-    await targetDocument.save();
-
-    // 2. Escalate user account associated with this specific workspace application
-    if (!targetDocument.userId) {
-      return next(new AppError('Verification processed, but no reference userId is linked to this hotel document.', 422));
-    }
-
-    if (normalizedDecision === 'APPROVED') {
-      // Hydrate document on update to immediately extract details for notification loop
-      const upgradedUser = await User.findByIdAndUpdate(
-        targetDocument.userId,
-        { $set: { role: 'HOTEL_ADMIN', status: 'ACTIVE' } },
-        { new: true }
-      ).select('email firstName lastName');
-
-      if (upgradedUser) {
-        const officialHotelName = targetDocument.businessName || 'Verified Hotel Partner';
-        
-        // Fire off onboarding pipeline safely
-        sendUpgradeToHotelEmail(officialHotelName, upgradedUser.email, upgradedUser.firstName).catch((err) => {
-          console.error('🚨 Failed to execute async hotel onboarding email dispatch:', err);
-        });
-      }
-    } else {
-      await User.findByIdAndUpdate(
-        targetDocument.userId,
-        { $set: { status: 'REJECTED' } }
-      );
-    }
+  if (currentStatus !== 'pending') {
+    return next(new AppError(`This hotel application registration has already been resolved as ${targetDocument.status}.`, 400));
   }
+
+  // 1. Commit status using system case mapping style
+  const hotelCaseDecision = normalizedDecision === 'APPROVED' ? 'Approved' : 'Rejected';
+  targetDocument.status = hotelCaseDecision;
+  await targetDocument.save();
+
+  // 2. Escalate user account associated with this specific workspace application
+  if (!targetDocument.userId) {
+    return next(new AppError('Verification processed, but no reference userId is linked to this hotel document.', 422));
+  }
+
+  if (normalizedDecision === 'APPROVED') {
+    // Hydrate document on update to immediately extract details for notification loop
+    const upgradedUser = await User.findByIdAndUpdate(
+      targetDocument.userId,
+      { 
+        $set: { 
+          role: 'HOTEL_ADMIN', 
+          status: 'ACTIVE',
+          agencyId: targetDocument._id // 🛡️ SURGICAL FIX: Automatically seal the workspace link upon approval
+        } 
+      },
+      { new: true }
+    ).select('email firstName lastName');
+
+    if (upgradedUser) {
+      const officialHotelName = targetDocument.businessName || 'Verified Hotel Partner';
+      
+      // Fire off onboarding pipeline safely
+      sendUpgradeToHotelEmail(officialHotelName, upgradedUser.email, upgradedUser.firstName).catch((err) => {
+        console.error('🚨 Failed to execute async hotel onboarding email dispatch:', err);
+      });
+    }
+  } else {
+    await User.findByIdAndUpdate(
+      targetDocument.userId,
+      { $set: { status: 'REJECTED' } }
+    );
+  }
+}
 
   // 3. Dispatch World-Class Unified Server Response Envelope
   return res.status(200).json({
